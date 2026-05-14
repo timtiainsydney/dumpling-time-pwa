@@ -33,14 +33,24 @@ const menuDatabase = [
   { id: 16, name: 'Mixed Vegetable Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Carrot, Green Cabbage, Coriander', price: '$8.80/$13.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/mixed-vegetable-dumpling.png' },
   { id: 17, name: 'Eggplant Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Tender eggplant mixed with savory seasonings, wrapped in soft handmade dumpling pastry.', price: '$7.80/$12.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/eggplant-dumpling.png' },
   { id: 18, name: 'Mushroom and Bok Choy Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fresh mushrooms and bok choy combined for a light, flavorful vegetarian dumpling filling.', price: '$8.80/$13.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/mushroom-bok-choy-dumpling.png' },
-  { id: 19, name: 'Egg and Chives Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fluffy eggs and fresh chives create a classic, savory homemade dumpling taste.', price: '$7.80/$12.80', category: 'vegetarian-dumplings', diet: ['vegetarian'], image: '/menu/egg-chives-dumpling.png' }
+  { id: 19, name: 'Egg and Chives Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fluffy eggs and fresh chives create a classic, savory homemade dumpling taste.', price: '$7.80/$12.80', category: 'vegetarian-dumplings', diet: ['vegetarian'], image: '/menu/egg-chives-dumpling.png' },
+  { id: 20, name: 'Pecking Duck Pancakes 4pcs', desc: 'Crispy duck with cucumber and hoisin sauce in soft pancakes.', price: '$15.80', category: 'entree', diet: [''], image: '/menu/pecking-duck-pancakes.png' },
+  { id: 21, name: 'San Choy Bow (Duck/Pork/Chicken/Vegetable) 2pcs', desc: 'Savory stir-fried filling served in fresh crunchy lettuce cups.', price: '$11.80', category: 'entree', diet: [''], image: '/menu/san-choy-bow.png' },
+  { id: 22, name: 'Salt and Pepper Tofu', desc: 'Crispy tofu tossed with garlic, chili, and aromatic pepper seasoning.', price: '$12.80', category: 'entree', diet: [''], image: '/menu/salt-pepper-tofu.png' },
+  { id: 23, name: 'Salt and Pepper Chili Chips', desc: 'Crispy fries seasoned with chili, garlic, and signature salt pepper spice.', price: '$10.80', category: 'entree', diet: [''], image: '/menu/salt-pepper-chili-chips.png' },
+  { id: 24, name: 'Deep Fried Eggplant with Sweet Lime and Soy Sauce', desc: 'Golden fried eggplant glazed with sweet lime and savory soy sauce.', price: '$13.80', category: 'entree', diet: [''], image: '/menu/deep-fried-eggplant.png' },
+  { id: 25, name: 'Cucumber Salad with Vinegar and Chili Oil', desc: 'Refreshing cucumber salad tossed with vinegar, garlic, and spicy chili oil.', price: '$10.80', category: 'entree', diet: [''], image: '/menu/cucumber-salad.png' },
+  { id: 26, name: 'Cheese and Prawn Spring Roll 4pcs', desc: 'Crispy spring rolls filled with juicy prawns and melted cheese.', price: '$12.80', category: 'entree', diet: [''], image: '/menu/cheese-prawn-spring-roll.png' },
+  { id: 27, name: 'Vegetable Spring Roll 4pcs', desc: 'Golden crispy rolls packed with fresh mixed vegetable filling.', price: '$10.80', category: 'entree', diet: [''], image: '/menu/vegetable-spring-roll.png' },
+  { id: 28, name: 'Shallot Pancakes', desc: 'Flaky pan-fried pancakes layered with fragrant fresh shallots.', price: '$9.80', category: 'entree', diet: [''], image: '/menu/shallot-pancakes.png' }
 ];
 
 const categoryLabels = {
   all: 'All',
   dumpling: 'Dumplings',
   bao: 'BAO',
-  'vegetarian-dumplings': 'Vegetarian Dumplings'
+  'vegetarian-dumplings': 'Vegetarian Dumplings',
+  entree: 'ENTREE'
 };
 
 let currentCategory = 'all';
