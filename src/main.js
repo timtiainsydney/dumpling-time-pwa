@@ -28,13 +28,19 @@ const menuDatabase = [
   { id: 11, name: 'Roasted Duck Bao 2pcs', desc: 'Rich roasted duck with hoisin sauce, wrapped in a warm bao.', price: '$12.80', category: 'bao', diet: [''], image: '/menu/roasted-duck-bao.png' },
   { id: 12, name: 'BBQ Pork Bao 2pcs', desc: 'Sweet and savory BBQ pork tucked inside a pillowy bao bun.', price: '$12.80', category: 'bao', diet: [''], image: '/menu/bbq-pork-bao.png' },
   { id: 13, name: 'Stir Fried Chicken Bao 2pcs', desc: 'Savory stir-fried chicken with Asian spices in a soft bao.', price: '$11.80', category: 'bao', diet: [''], image: '/menu/stir-fried-chicken-bao.png' },
-  { id: 14, name: 'Stir Fried Beef Bao 2pcs', desc: 'Tender stir-fried beef with aromatic sauce, bao-wrapped perfection.', price: '$11.80', category: 'bao', diet: [''], image: '/menu/stir-fried-beef-bao.png' }
+  { id: 14, name: 'Stir Fried Beef Bao 2pcs', desc: 'Tender stir-fried beef with aromatic sauce, bao-wrapped perfection.', price: '$11.80', category: 'bao', diet: [''], image: '/menu/stir-fried-beef-bao.png' },
+  { id: 15, name: 'Mixed Tofu Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fried Tofu, Bok Choy, Carrot, Chinese Broccoli', price: '$8.80/$13.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/mixed-tofu-dumpling.png' },
+  { id: 16, name: 'Mixed Vegetable Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Carrot, Green Cabbage, Coriander', price: '$8.80/$13.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/mixed-vegetable-dumpling.png' },
+  { id: 17, name: 'Eggplant Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Tender eggplant mixed with savory seasonings, wrapped in soft handmade dumpling pastry.', price: '$7.80/$12.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/eggplant-dumpling.png' },
+  { id: 18, name: 'Mushroom and Bok Choy Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fresh mushrooms and bok choy combined for a light, flavorful vegetarian dumpling filling.', price: '$8.80/$13.80', category: 'vegetarian-dumplings', diet: ['vegan'], image: '/menu/mushroom-bok-choy-dumpling.png' },
+  { id: 19, name: 'Egg and Chives Dumpling (Steamed/Pan Fried) 6pcs/12pcs', desc: 'Fluffy eggs and fresh chives create a classic, savory homemade dumpling taste.', price: '$7.80/$12.80', category: 'vegetarian-dumplings', diet: ['vegetarian'], image: '/menu/egg-chives-dumpling.png' }
 ];
 
 const categoryLabels = {
   all: 'All',
   dumpling: 'Dumplings',
-  bao: 'BAO'
+  bao: 'BAO',
+  'vegetarian-dumplings': 'Vegetarian Dumplings'
 };
 
 let currentCategory = 'all';
