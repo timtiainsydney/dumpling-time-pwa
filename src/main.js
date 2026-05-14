@@ -42,7 +42,46 @@ const menuDatabase = [
   { id: 25, name: 'Cucumber Salad with Vinegar and Chili Oil', desc: 'Refreshing cucumber salad tossed with vinegar, garlic, and spicy chili oil.', price: '$10.80', category: 'entree', diet: [''], image: '/menu/cucumber-salad.png' },
   { id: 26, name: 'Cheese and Prawn Spring Roll 4pcs', desc: 'Crispy spring rolls filled with juicy prawns and melted cheese.', price: '$12.80', category: 'entree', diet: [''], image: '/menu/cheese-prawn-spring-roll.png' },
   { id: 27, name: 'Vegetable Spring Roll 4pcs', desc: 'Golden crispy rolls packed with fresh mixed vegetable filling.', price: '$10.80', category: 'entree', diet: [''], image: '/menu/vegetable-spring-roll.png' },
-  { id: 28, name: 'Shallot Pancakes', desc: 'Flaky pan-fried pancakes layered with fragrant fresh shallots.', price: '$9.80', category: 'entree', diet: [''], image: '/menu/shallot-pancakes.png' }
+  { id: 28, name: 'Shallot Pancakes', desc: 'Flaky pan-fried pancakes layered with fragrant fresh shallots.', price: '$9.80', category: 'entree', diet: [''], image: '/menu/shallot-pancakes.png' },
+  { id: 29, name: 'Sizzling (Beef or Chicken) Mongolian', desc: '', price: '$22.80', category: 'main', diet: [''], image: '/menu/sizzling-mongolian.png' },
+  { id: 30, name: 'Sizzling Lamb Mongolian Style', desc: '', price: '$24.80', category: 'main', diet: [''], image: '/menu/sizzling-lamb-mongolian.png' },
+  { id: 31, name: 'Stir Fried Cumin Lamb', desc: '', price: '$24.80', category: 'main', diet: [''], image: '/menu/stir-fried-cumin-lamb.png' },
+  { id: 32, name: 'Crispy Shredded Beef with Sweet Black Vinegar Sauce', desc: '', price: '$22.80', category: 'main', diet: [''], image: '/menu/crispy-shredded-beef.png' },
+  { id: 33, name: 'Satay (Beef or Chicken) with Vegetable', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/satay-beef-chicken-vegetable.png' },
+  { id: 34, name: 'Black Bean (Beef or Chicken) with vegetable', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/black-bean-beef-chicken.png' },
+  { id: 35, name: 'Black Pepper (Beef or Chicken) with vegetable', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/black-pepper-beef-chicken.png' },
+  { id: 36, name: 'Singapore Chili (Beef or Chicken) with vegetable', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/singapore-chili-beef-chicken.png' },
+  { id: 37, name: 'Honey Chicken', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/honey-chicken.png' },
+  { id: 38, name: 'Kung-Pao Chicken', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/kung-pao-chicken.png' },
+  { id: 39, name: 'Sweet and Sour (Pork or Chicken) with Pineapple', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/sweet-sour-pork-chicken.png' },
+  { id: 40, name: 'Stir Fried Green Beans and Okra with Garlic and Pork', desc: '', price: '$19.80', category: 'main', diet: [''], image: '/menu/green-beans-okra-pork.png' },
+  { id: 41, name: 'Stir Fried King Prawn with Seasonal vegetables in (XO or Garlic) sauce', desc: '', price: '$25.80', category: 'main', diet: [''], image: '/menu/king-prawn-seasonal-vegetables.png' },
+  { id: 42, name: 'Salt and Pepper King Prawn', desc: '', price: '$25.80', category: 'main', diet: [''], image: '/menu/salt-pepper-king-prawn.png' },
+  { id: 43, name: 'Singapore Chili King Prawns', desc: '', price: '$25.80', category: 'main', diet: [''], image: '/menu/singapore-chili-king-prawns.png' },
+  { id: 44, name: 'Honey King Prawn', desc: '', price: '$25.80', category: 'main', diet: [''], image: '/menu/honey-king-prawn.png' },
+  { id: 45, name: 'Salt and Pepper Squid', desc: '', price: '$22.80', category: 'main', diet: [''], image: '/menu/salt-pepper-squid.png' },
+  { id: 46, name: 'Stir Fried Mixed Seasonal Vegetables with (Garlic or Singapore Chili or XO seafood) Sauce', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/mixed-seasonal-vegetables.png' },
+  { id: 47, name: 'Chinese Broccoli in (Garlic or Oyster) Sauce', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/chinese-broccoli-sauce.png' },
+  { id: 48, name: 'Stir Fried Snow Peas and Broccoli', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/snow-peas-broccoli.png' },
+  { id: 49, name: 'Eggplant Soy Sauce Hot Pot', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/eggplant-soy-sauce-hot-pot.png' },
+  { id: 50, name: 'Szechuan Style Spicy Eggplant Hot Pot', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/szechuan-spicy-eggplant-hot-pot.png' },
+  { id: 51, name: 'Stir Fried Green Beans with Okra', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/green-beans-okra.png' },
+  { id: 52, name: 'Mapo Tofu Hot Pot', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/mapo-tofu-hot-pot.png' },
+  { id: 53, name: 'Stir Fried Mixed Mushroom with Okra', desc: '', price: '$19.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/mixed-mushroom-okra.png' },
+  { id: 54, name: 'Stir Fried Bok Choy with Soy Sauce', desc: '', price: '$18.80', category: 'vegetarian-main', diet: ['vegan'], image: '/menu/bok-choy-soy-sauce.png' },
+  { id: 55, name: 'Vegetarian Fried Rice with Egg', desc: '', price: '$14.80', category: 'rice-noodle', diet: [''], image: '/menu/vegetarian-fried-rice-egg.png' },
+  { id: 56, name: 'Egg Fried Rice with Soy Sauce and Shallot', desc: '', price: '$13.80', category: 'rice-noodle', diet: [''], image: '/menu/egg-fried-rice-soy-shallot.png' },
+  { id: 57, name: 'Shredded Duck Fried Rice with Egg', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/shredded-duck-fried-rice.png' },
+  { id: 58, name: 'BBQ Pork Fried Rice with Egg', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/bbq-pork-fried-rice.png' },
+  { id: 59, name: 'Special Combination Fried Rice (Prawn and Chicken and Beef and Vegetable) with Egg', desc: '', price: '$16.80', category: 'rice-noodle', diet: [''], image: '/menu/special-combination-fried-rice.png' },
+  { id: 60, name: 'Thai Fried Rice with (Chicken or Beef or Prawn) and Egg', desc: '', price: '$15.80/$15.80/$17.80', category: 'rice-noodle', diet: [''], image: '/menu/thai-fried-rice.png' },
+  { id: 61, name: 'Stir Fried Rice Flat Noodles with (Pork or Beef or Chicken or Vegetable) and Egg', desc: '', price: '$16.80', category: 'rice-noodle', diet: [''], image: '/menu/stir-fried-rice-flat-noodles.png' },
+  { id: 62, name: 'Stir Fried Hand Made Noodles with (Pork or Beef or Chicken or Vegetable)', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/stir-fried-hand-made-noodles.png' },
+  { id: 63, name: 'Stir Fried Rice Thin Noodle with (Chicken or Vegetable) and Singapore Sauce and Egg', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/singapore-rice-thin-noodle.png' },
+  { id: 64, name: 'BBQ Pork in Hand Made Noodle Soup', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/bbq-pork-noodle-soup.png' },
+  { id: 65, name: '(Chicken or Beef or Vegetable) Laksa', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/chicken-beef-vegetable-laksa.png' },
+  { id: 66, name: 'Seafood Laksa', desc: '', price: '$17.80', category: 'rice-noodle', diet: [''], image: '/menu/seafood-laksa.png' },
+  { id: 67, name: 'Steamed Rice', desc: '', price: '$3.00', category: 'rice-noodle', diet: [''], image: '/menu/steamed-rice.png' }
 ];
 
 const categoryLabels = {
@@ -50,7 +89,10 @@ const categoryLabels = {
   dumpling: 'Dumplings',
   bao: 'BAO',
   'vegetarian-dumplings': 'Vegetarian Dumplings',
-  entree: 'ENTREE'
+  entree: 'ENTREE',
+  main: 'MAIN',
+  'vegetarian-main': 'VEGETARIAN MAIN',
+  'rice-noodle': 'RICE AND NOODLE'
 };
 
 let currentCategory = 'all';
@@ -209,7 +251,7 @@ function renderMenu() {
         <img class="menu-image" src="${item.image}" alt="${item.name}" loading="lazy">
         <div class="menu-info">
           <div class="menu-name">${item.name} ${dietTags}</div>
-          <div class="menu-desc">${item.desc}</div>
+          ${item.desc ? `<div class="menu-desc">${item.desc}</div>` : ''}
         </div>
         <div class="menu-price">${item.price}</div>
       </article>
