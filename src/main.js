@@ -1,4 +1,4 @@
-import { registerSW } from 'virtual:pwa-register';
+ï»¿import { registerSW } from 'virtual:pwa-register';
 import './styles.css';
 
 let updateApp = null;
@@ -185,9 +185,9 @@ document.querySelector('#app').innerHTML = `
     </main>
 
     <nav class="bottom-nav" aria-label="Primary navigation">
-      <button class="nav-item active" data-page="home"><span class="nav-icon">âŒ?/span><span>Home</span></button>
-      <button class="nav-item" data-page="menu"><span class="nav-icon">â˜?/span><span>Menu</span></button>
-      <button class="nav-item" data-page="booking"><span class="nav-icon">â˜?/span><span>Book</span></button>
+      <button class="nav-item active" data-page="home"><span class="nav-icon">&#8962;</span><span>Home</span></button>
+      <button class="nav-item" data-page="menu"><span class="nav-icon">&#9776;</span><span>Menu</span></button>
+      <button class="nav-item" data-page="booking"><span class="nav-icon">&#128197;</span><span>Book</span></button>
     </nav>
 
     <div class="install-sheet" id="installSheet" aria-live="polite">
