@@ -183,6 +183,35 @@ document.querySelector('#app').innerHTML = `
             <img src="/home/bar-drinks.jpg" alt="Dumpling Time bar drinks">
           </section>
 
+          <section class="poster-business" id="franchiseSection">
+            <p class="script-title">Grow With Us</p>
+            <h2>Franchise</h2>
+            <p>Built for future partners who want to bring the Dumpling Time experience into new neighbourhoods with a repeatable brand, menu and operating model.</p>
+          </section>
+
+          <section class="poster-capabilities" id="businessSection">
+            <article>
+              <p class="app-kicker">Business</p>
+              <h3>Partners</h3>
+              <p>Wholesale, distributor and enterprise pathways for broader commercial growth.</p>
+            </article>
+            <article id="supplyChainSection">
+              <p class="app-kicker">Supply Chain</p>
+              <h3>Production</h3>
+              <p>Ingredient sourcing, central preparation and inventory systems that support scale.</p>
+            </article>
+            <article id="deliverySection">
+              <p class="app-kicker">Delivery</p>
+              <h3>Fulfilment</h3>
+              <p>Delivery, takeaway and order flows designed to connect stores with customers efficiently.</p>
+            </article>
+            <article id="platformSection">
+              <p class="app-kicker">Platform</p>
+              <h3>Operations</h3>
+              <p>Live ordering, kitchen, payment and management tools behind the wider business.</p>
+            </article>
+          </section>
+
           <section class="poster-location" id="locationSection">
             <p class="app-kicker">Visit Us</p>
             <h2>Newtown</h2>
@@ -243,14 +272,14 @@ document.querySelector('#app').innerHTML = `
       <p class="app-kicker">Dumpling Time</p>
       <h2>Explore</h2>
       <button data-jump="home">Home</button>
+      <button data-page-link="menu">Menu</button>
       <button data-jump="story">Our Story</button>
-      <button data-jump="space">The Space</button>
-      <button data-jump="drinks">Drinks</button>
-      <button data-page-link="menu">Full Menu</button>
-      <button data-cat-link="dumpling">Dumplings</button>
-      <button data-cat-link="bao">Bao</button>
-      <button data-cat-link="main">Main</button>
-      <button data-page-link="booking">Book</button>
+      <button data-jump="franchise">Franchise</button>
+      <button data-jump="business">Business</button>
+      <button data-jump="supply-chain">Supply Chain</button>
+      <button data-jump="delivery">Delivery</button>
+      <button data-jump="platform">Platform</button>
+      <button data-jump="contact">Contact</button>
     </aside>
 
     <div class="install-sheet" id="installSheet" aria-live="polite">
@@ -409,8 +438,12 @@ document.querySelectorAll('[data-jump]').forEach((btn) => {
     const targets = {
       home: 'homeHero',
       story: 'storySection',
-      space: 'spaceSection',
-      drinks: 'drinksSection'
+      franchise: 'franchiseSection',
+      business: 'businessSection',
+      'supply-chain': 'supplyChainSection',
+      delivery: 'deliverySection',
+      platform: 'platformSection',
+      contact: 'locationSection'
     };
     closeDrawer();
     jumpHomeSection(targets[btn.dataset.jump]);

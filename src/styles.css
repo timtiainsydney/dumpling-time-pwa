@@ -259,6 +259,7 @@ button {
 
 .poster-story,
 .poster-menu,
+.poster-business,
 .poster-location {
   padding: 76px 28px;
   text-align: center;
@@ -266,6 +267,7 @@ button {
 
 .poster-story h2,
 .poster-menu h2,
+.poster-business h2,
 .poster-drinks h2,
 .poster-location h2 {
   margin-top: 14px;
@@ -276,6 +278,7 @@ button {
 }
 
 .poster-story p:not(.script-title),
+.poster-business p:not(.script-title),
 .poster-drinks p:not(.script-title),
 .poster-location p {
   max-width: 360px;
@@ -354,6 +357,35 @@ button {
   padding: 58px 22px 70px;
   background: #f7f4ef;
   text-align: center;
+}
+
+.poster-business {
+  background: #ffffff;
+}
+
+.poster-capabilities {
+  display: grid;
+  gap: 1px;
+  background: #ded7cd;
+}
+
+.poster-capabilities article {
+  padding: 30px 24px;
+  background: #f6f2ec;
+}
+
+.poster-capabilities h3 {
+  margin-top: 10px;
+  font-size: 28px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.poster-capabilities p:last-child {
+  margin-top: 14px;
+  color: #595653;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .poster-location {
