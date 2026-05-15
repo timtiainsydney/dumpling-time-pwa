@@ -116,39 +116,81 @@ document.querySelector('#app').innerHTML = `
 
     <main class="main-content" id="mainContent">
       <section id="homePage" class="page active-page">
-        <div class="hero">
-          <h2>Fresh dumplings, bao and comfort bites</h2>
-          <p>Made for quick ordering, phone-first browsing and offline menu access.</p>
-          <div class="address">43 Enmore Road, Newtown, NSW 2042</div>
-        </div>
-        <div class="action-buttons">
-          <button class="action-btn" id="dineInBtn">Dine In</button>
-          <button class="action-btn" id="takeawayBtn">Takeaway</button>
-          <button class="action-btn" id="bookTableBtn">Book</button>
-        </div>
-        <section class="card">
-          <div class="section-title">Popular Picks</div>
-          <div class="menu-item compact-pick">
-            <img class="menu-image" src="/menu/bbq-pork-bun.png" alt="steamed BBQ Pork Bun 2Pcs">
-            <div class="menu-info">
-              <div class="menu-name">steamed BBQ Pork Bun 2Pcs</div>
-              <div class="menu-desc">Sweet savory BBQ pork, fluffy soft bun</div>
+        <div class="home-long">
+          <section class="home-hero" id="homeHero">
+            <img src="/home/hero-night.jpg" alt="Dumpling Time Newtown entrance at night">
+            <div class="hero-shade"></div>
+            <div class="hero-contact">
+              <span>43 Enmore Road, Newtown NSW 2042</span>
+              <span>0450 650 680</span>
             </div>
-            <div class="menu-price">$7.80</div>
-          </div>
-          <div class="menu-item compact-pick">
-            <img class="menu-image" src="/menu/roasted-duck-bao.png" alt="Roasted Duck Bao 2pcs">
-            <div class="menu-info">
-              <div class="menu-name">Roasted Duck Bao 2pcs</div>
-              <div class="menu-desc">Rich roasted duck with hoisin sauce</div>
+            <div class="hero-copy">
+              <p class="script-title">Welcome to</p>
+              <h2>Dumpling<br>Time</h2>
+              <p>Handmade dumplings, bao, noodles and late-night drinks in the heart of Newtown.</p>
+              <div class="hero-actions">
+                <button class="poster-btn" id="heroMenuBtn">Menu</button>
+                <button class="poster-btn ghost" id="heroBookBtn">Book</button>
+              </div>
             </div>
-            <div class="menu-price">$12.80</div>
-          </div>
-        </section>
-        <section class="card app-note">
-          <div class="section-title">App Ready</div>
-          <p>Install this PWA from your phone browser to open it as a standalone app with cached menu images.</p>
-        </section>
+          </section>
+
+          <section class="poster-story" id="storySection">
+            <p class="script-title">Discover</p>
+            <h2>Our Story</h2>
+            <p>Dumpling Time is a small Newtown dining room built around warm service, handmade comfort food and a lively neighbourhood bar feeling.</p>
+            <p>Drop in for dumplings and bao, stay for cocktails, shared plates and the glow of Enmore Road after dark.</p>
+          </section>
+
+          <section class="poster-gallery" id="spaceSection">
+            <img src="/home/storefront-day.jpg" alt="Dumpling Time storefront during the day">
+            <img src="/home/interior-empty.jpg" alt="Dumpling Time dining room">
+          </section>
+
+          <section class="poster-menu" id="menuShortcuts">
+            <p class="script-title">Taste</p>
+            <h2>Fresh From The Kitchen</h2>
+            <div class="category-shortcuts">
+              <button data-cat="dumpling">Dumplings</button>
+              <button data-cat="bao">Bao</button>
+              <button data-cat="entree">Entree</button>
+              <button data-cat="main">Main</button>
+              <button data-cat="rice-noodle">Rice & Noodle</button>
+            </div>
+          </section>
+
+          <section class="poster-feature">
+            <img src="/home/bao-real.jpg" alt="Open bao served at Dumpling Time">
+            <div>
+              <p class="app-kicker">Signature Bites</p>
+              <h3>Bao, dumplings and sizzling plates made for sharing.</h3>
+            </div>
+          </section>
+
+          <section class="poster-stack">
+            <img src="/home/prawn-dumpling.jpg" alt="Prawn dumpling close up">
+            <img src="/home/soupy-dumpling.jpg" alt="Soup dumpling close up">
+            <img src="/home/sizzling-dish.jpg" alt="Sizzling main dish">
+          </section>
+
+          <section class="poster-drinks" id="drinksSection">
+            <img src="/home/cocktails-table.jpg" alt="Cocktails at Dumpling Time">
+            <div>
+              <p class="script-title">Stay Later</p>
+              <h2>Drinks After Dumplings</h2>
+              <p>Cocktails, beer and wine make the dining room feel easy, warm and a little bit festive.</p>
+            </div>
+            <img src="/home/bar-drinks.jpg" alt="Dumpling Time bar drinks">
+          </section>
+
+          <section class="poster-location" id="locationSection">
+            <p class="app-kicker">Visit Us</p>
+            <h2>Newtown</h2>
+            <p>43 Enmore Road, Newtown NSW 2042</p>
+            <p>Phone: 0450 650 680</p>
+            <button class="direction-btn" id="directionsBtn">Get Directions &#8594;</button>
+          </section>
+        </div>
       </section>
 
       <section id="menuPage" class="page">
@@ -189,6 +231,27 @@ document.querySelector('#app').innerHTML = `
       <button class="nav-item" data-page="menu"><span class="nav-icon">&#9776;</span><span>Menu</span></button>
       <button class="nav-item" data-page="booking"><span class="nav-icon">&#128197;</span><span>Book</span></button>
     </nav>
+
+    <button class="hamburger-menu" id="hamburgerMenu" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="menu-scrim" id="menuScrim"></div>
+    <aside class="menu-drawer" id="menuDrawer" aria-label="Quick menu">
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close menu">&#215;</button>
+      <p class="app-kicker">Dumpling Time</p>
+      <h2>Explore</h2>
+      <button data-jump="home">Home</button>
+      <button data-jump="story">Our Story</button>
+      <button data-jump="space">The Space</button>
+      <button data-jump="drinks">Drinks</button>
+      <button data-page-link="menu">Full Menu</button>
+      <button data-cat-link="dumpling">Dumplings</button>
+      <button data-cat-link="bao">Bao</button>
+      <button data-cat-link="main">Main</button>
+      <button data-page-link="booking">Book</button>
+    </aside>
 
     <div class="install-sheet" id="installSheet" aria-live="polite">
       <div>
@@ -307,6 +370,68 @@ navBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     switchPage(btn.dataset.page);
   });
+});
+
+function closeDrawer() {
+  document.getElementById('menuDrawer')?.classList.remove('show');
+  document.getElementById('menuScrim')?.classList.remove('show');
+  document.getElementById('hamburgerMenu')?.setAttribute('aria-expanded', 'false');
+}
+
+function openDrawer() {
+  document.getElementById('menuDrawer')?.classList.add('show');
+  document.getElementById('menuScrim')?.classList.add('show');
+  document.getElementById('hamburgerMenu')?.setAttribute('aria-expanded', 'true');
+}
+
+function jumpHomeSection(sectionId) {
+  switchPage('home');
+  const section = document.getElementById(sectionId);
+  if (section) {
+    window.setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  }
+}
+
+function openCategory(category) {
+  currentCategory = category;
+  switchPage('menu');
+  document.querySelectorAll('.filter-chip').forEach((chip) => {
+    chip.classList.toggle('active-filter', chip.dataset.cat === category);
+  });
+  renderMenu();
+}
+
+document.getElementById('hamburgerMenu')?.addEventListener('click', openDrawer);
+document.getElementById('drawerClose')?.addEventListener('click', closeDrawer);
+document.getElementById('menuScrim')?.addEventListener('click', closeDrawer);
+document.querySelectorAll('[data-jump]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const targets = {
+      home: 'homeHero',
+      story: 'storySection',
+      space: 'spaceSection',
+      drinks: 'drinksSection'
+    };
+    closeDrawer();
+    jumpHomeSection(targets[btn.dataset.jump]);
+  });
+});
+document.querySelectorAll('[data-page-link]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    closeDrawer();
+    switchPage(btn.dataset.pageLink);
+  });
+});
+document.querySelectorAll('[data-cat-link], .category-shortcuts button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    closeDrawer();
+    openCategory(btn.dataset.catLink || btn.dataset.cat);
+  });
+});
+document.getElementById('heroMenuBtn')?.addEventListener('click', () => switchPage('menu'));
+document.getElementById('heroBookBtn')?.addEventListener('click', () => switchPage('booking'));
+document.getElementById('directionsBtn')?.addEventListener('click', () => {
+  window.location.href = 'https://www.google.com/maps/search/?api=1&query=43%20Enmore%20Road%20Newtown%20NSW%202042';
 });
 
 document.getElementById('dineInBtn')?.addEventListener('click', () => {
