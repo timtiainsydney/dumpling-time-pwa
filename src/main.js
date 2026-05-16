@@ -259,23 +259,61 @@ document.querySelector('#app').innerHTML = `
             </form>
           </section>
 
-          <section class="poster-capabilities" id="businessSection">
-            <article>
+          <section class="business-section" id=""businessSection"">
+            <div class="section-intro">
               <p class="app-kicker">Business</p>
-              <h3>Partners</h3>
-              <p>Wholesale, distributor and enterprise pathways for broader commercial growth.</p>
-            </article>
-            <article id="supplyChainSection">
+              <h2>Built For More Than One Store</h2>
+              <p>Dumpling Time grows through the right partnerships, supplying trusted products, serving larger groups and opening selective commercial pathways beyond the dining room.</p>
+            </div>
+            <div class="business-grid">
+              <article>
+                <h3>Wholesale</h3>
+                <p>Reliable dumpling and bao lines for cafes, venues and food businesses that want quality without building the category from scratch.</p>
+              </article>
+              <article>
+                <h3>Corporate</h3>
+                <p>Catering formats for offices, events and teams that need food to arrive with warmth, pace and a sense of occasion.</p>
+              </article>
+              <article>
+                <h3>Distribution</h3>
+                <p>Carefully chosen routes for partners who can extend reach while protecting what makes the brand distinct.</p>
+              </article>
+            </div>
+            <button class="section-cta">Talk to our business team</button>
+          </section>
+
+          <section class="supply-section" id="supplyChainSection">
+            <div class="section-intro">
               <p class="app-kicker">Supply Chain</p>
-              <h3>Production</h3>
-              <p>Ingredient sourcing, central preparation and inventory systems that support scale.</p>
-            </article>
-            <article id="deliverySection">
+              <h2>Consistency Is Designed In</h2>
+              <p>Growth only works when quality can travel. Our supply chain protects flavour, pace and reliability as the business expands.</p>
+            </div>
+            <div class="capability-grid">
+              <article><span>01</span><h3>Sourcing</h3><p>Trusted ingredients chosen for repeatable quality, disciplined cost and dependable availability.</p></article>
+              <article><span>02</span><h3>Central Prep</h3><p>Core prep systems that reduce store complexity while keeping the guest experience fresh and expressive.</p></article>
+              <article><span>03</span><h3>Quality Control</h3><p>Clear standards, training and checks that help every location deliver the same Dumpling Time promise.</p></article>
+              <article><span>04</span><h3>Inventory</h3><p>Practical stock and replenishment systems that support busy service without unnecessary waste.</p></article>
+            </div>
+            <p class="section-closing">A strong brand scales on more than demand. It scales on control.</p>
+          </section>
+
+          <section class="delivery-section" id=""deliverySection"">
+            <div class="section-intro">
               <p class="app-kicker">Delivery</p>
-              <h3>Fulfilment</h3>
-              <p>Delivery, takeaway and order flows designed to connect stores with customers efficiently.</p>
-            </article>
-            <article id="platformSection">
+              <h2>From Kitchen To Customer</h2>
+              <p>Every order should feel considered �� whether guests dine in, collect on the way home or order across the neighbourhood.</p>
+            </div>
+            <div class="capability-grid delivery-grid">
+              <article><span>01</span><h3>Pickup</h3><p>Fast takeaway flows for guests who want Dumpling Time on their own schedule.</p></article>
+              <article><span>02</span><h3>Platforms</h3><p>Delivery-ready pathways that connect stores with the channels customers already use.</p></article>
+              <article><span>03</span><h3>Packaging</h3><p>Packaging choices that protect heat, texture and presentation beyond the kitchen pass.</p></article>
+              <article><span>04</span><h3>Order Flow</h3><p>Clear ordering, kitchen and handoff systems that keep service moving when demand climbs.</p></article>
+            </div>
+            <p class="section-closing">Good delivery is not an add-on. It is part of the product.</p>
+          </section>
+
+          <section class="poster-capabilities" id=""platformSection"">
+            <article>
               <p class="app-kicker">Platform</p>
               <h3>Operations</h3>
               <p>Live ordering, kitchen, payment and management tools behind the wider business.</p>
@@ -658,6 +696,10 @@ const initialScreen = new URLSearchParams(window.location.search).get('screen');
 if (initialScreen === 'menu' || initialScreen === 'booking') {
   switchPage(initialScreen);
 }
+
+
+
+
 
 
 
