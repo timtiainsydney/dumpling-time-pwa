@@ -354,12 +354,15 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="card">
           <div class="form-group"><label for="bookName">Name</label><input type="text" placeholder="Your name" id="bookName"></div>
-          <div class="form-group"><label for="bookGuests">Guests</label><input type="number" value="2" id="bookGuests"></div>
+          <div class="form-group"><label for="bookPhone">Phone</label><input type="tel" placeholder="Your phone number" id="bookPhone"></div>
+          <div class="form-group"><label for="bookAdults">Adults</label><input type="number" min="1" value="2" id="bookAdults"></div>
+          <div class="form-group"><label for="bookChildren">Children</label><input type="number" min="0" value="0" id="bookChildren"></div>
+          <div class="form-group"><label for="bookHighChair">High chair needed?</label><select id="bookHighChair"><option value="no">No</option><option value="yes">Yes</option></select></div>
           <div class="form-group"><label for="bookDate">Date</label><input type="date" id="bookDate"></div>
           <div class="form-group"><label for="bookTime">Time</label><input type="time" id="bookTime"></div>
           <div class="info-text" id="bookingHoursNote"></div>
           <button class="submit-btn" id="submitBooking">Request Booking</button>
-          <div class="info-text">Or call (02) 1234 5678</div>
+          <div class="info-text" id="bookingStatus">Or call (02) 1234 5678</div>
         </div>
       </section>
     </main>
@@ -621,11 +624,27 @@ function updateBookingAvailability() {
 }
 document.getElementById('submitBooking')?.addEventListener('click', () => {
   const name = document.getElementById('bookName').value.trim();
+  const phone = document.getElementById('bookPhone').value.trim();
+  const adults = Number(document.getElementById('bookAdults').value);
+  const children = Number(document.getElementById('bookChildren').value);
   const dateValue = document.getElementById('bookDate').value;
   const timeValue = document.getElementById('bookTime').value;
   const hours = getBookingHours(dateValue);
+  const status = document.getElementById('bookingStatus');
   if (!name) {
     alert('Please enter your name.');
+    return;
+  }
+  if (!phone) {
+    alert('Please enter your phone number.');
+    return;
+  }
+  if (!Number.isFinite(adults) || adults < 1) {
+    alert('Please enter at least 1 adult.');
+    return;
+  }
+  if (!Number.isFinite(children) || children < 0) {
+    alert('Please enter a valid number of children.');
     return;
   }
   if (!dateValue) {
@@ -644,7 +663,9 @@ document.getElementById('submitBooking')?.addEventListener('click', () => {
     alert(`Please choose a time between ${hours.label}.`);
     return;
   }
-  alert(`${name}, your booking request has been submitted.`);
+  if (status) {
+    status.textContent = 'Booking request submitted successfully. We will message you soon to confirm whether your booking is accepted.';
+  }
 });
 
 document.getElementById('franchiseForm')?.addEventListener('submit', (event) => {
