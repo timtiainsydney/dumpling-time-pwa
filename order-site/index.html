@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>QR Order - Dumpling Time</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f7f7f7;padding-bottom:80px}
+        .header{background:linear-gradient(135deg,#FF6B35 0%,#FF8C42 100%);color:white;padding:20px 16px;position:sticky;top:0;z-index:10}
+        .header h1{font-size:24px}
+        .table-info{font-size:14px;margin-top:8px}
+        .categories{background:white;padding:12px 16px;overflow-x:auto;white-space:nowrap;position:sticky;top:88px;z-index:9;display:flex;gap:8px}
+        .category-btn{padding:8px 16px;background:#f0f0f0;border-radius:30px;font-size:14px;cursor:pointer}
+        .category-btn.active{background:#FF6B35;color:white}
+        .menu-container{padding:16px}
+        .menu-item{background:white;border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .item-info{flex:1}
+        .item-name{font-size:16px;font-weight:600;color:#333;margin-bottom:4px}
+        .item-desc{font-size:12px;color:#999;margin-bottom:6px}
+        .item-price{font-size:18px;font-weight:700;color:#FF6B35}
+        .item-price::before{content:'$'}
+        .add-btn{background:#FF6B35;color:white;border:none;width:44px;height:44px;border-radius:50%;font-size:24px;font-weight:bold;cursor:pointer;flex-shrink:0}
+        .add-btn:active{transform:scale(0.9)}
+        .cart-bar{position:fixed;bottom:0;left:0;right:0;background:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -2px 10px rgba(0,0,0,0.1);z-index:20}
+        .cart-count{font-size:18px;font-weight:600}
+        .cart-total{font-size:20px;font-weight:700;color:#FF6B35}
+        .view-cart-btn{background:#FF6B35;color:white;border:none;padding:10px 24px;border-radius:30px;font-size:16px;cursor:pointer}
+        .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:100;justify-content:center;align-items:flex-end}
+        .modal.show{display:flex}
+        .modal-content{background:white;width:100%;max-height:80vh;border-radius:20px 20px 0 0;overflow-y:auto}
+        .modal-header{padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;position:sticky;top:0;background:white}
+        .close-modal{font-size:28px;cursor:pointer}
+        .cart-item{padding:16px;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center}
+        .cart-item-controls{display:flex;gap:12px;align-items:center}
+        .qty-btn{background:#f0f0f0;border:none;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer}
+        .submit-order{background:#FF6B35;color:white;border:none;padding:14px;margin:16px;border-radius:12px;font-size:18px;cursor:pointer;width:calc(100% - 32px)}
+        .empty-cart{text-align:center;padding:40px;color:#999}
+        .admin-panel{margin:16px;padding:16px;background:#f0f0f0;border-radius:12px}
+        .qr-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+        .qr-btn{background:#4CAF50;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer}
+        .export-btn{margin-top:12px;padding:8px 16px;background:#2196F3;color:white;border:none;border-radius:8px;cursor:pointer}
+/* 主页样式 */
+.home-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 200;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.home-header {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+.home-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.home-header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+.info-card {
+    background: #f8f8f8;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.info-card h3 {
+    color: #FF6B35;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+.info-card p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #333;
+}
+.photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+.photo-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.start-order-btn {
+    background: #FF6B35;
+    color: white;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+    </style>
+</head>
+<body>
+<!-- 主页（扫码后先显示这个） -->
+<div id="homeScreen" class="home-screen">
+    <div class="home-header">
+        <h1>🥟 Dumpling Time</h1>
+        <p>Handmade dumplings, bao, noodles and late night drinks in the heart of Newtown.</p>
+    </div>
+    
+    <div class="info-card">
+        <h3>📍 Address</h3>
+        <p>43 Enmore Road, Newtown NSW 2042</p>
+        <h3>📞 Phone</h3>
+        <p>(04) 50650680</p>
+        <h3>⏰ Opening Hours</h3>
+        <p>Wed-Mon: Opens 5pm</p>
+    </div>
+    
+    <div class="photo-gallery" id="photoGallery">
+        <!-- 店铺照片会在这里显示 -->
+        <div style="background:#f0f0f0; border-radius:12px; display:flex; align-items:center; justify-content:center; height:150px;">📷 Photo 1</div>
+        <div style="background:#f0f0f0; border-radius:12px; display:flex; align-items:center; justify-content:center; height:150px;">📷 Photo 2</div>
+    </div>
+    
+    <button class="start-order-btn" id="startOrderBtn">🍽️ Start Order</button>
+</div>
+<div class="header">
+    <h1>🥟 Dumpling Time</h1>
+    <div class="table-info" id="tableInfo">Please scan table QR code</div>
+</div>
+
+<div class="categories" id="categories"></div>
+<div class="menu-container" id="menuContainer"></div>
+
+<div class="cart-bar">
+    <div>
+        <div class="cart-count" id="cartCount">0 items</div>
+        <div class="cart-total" id="cartTotal">$0</div>
+    </div>
+    <button class="view-cart-btn" id="viewCartBtn">View Order</button>
+</div>
+
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>My Order</h3>
+            <span class="close-modal" id="closeModal">&times;</span>
+        </div>
+        <div id="cartItemsList"></div>
+        <button class="submit-order" id="submitOrderBtn">Submit Order</button>
+    </div>
+</div>
+
+<div class="admin-panel">
+    <div style="font-weight:600;">🔧 Table QR Code Manager</div>
+    <div class="qr-buttons" id="qrButtons"></div>
+    <div id="qrCodeDisplay" style="margin-top:20px;text-align:center;"></div>
+    <button class="export-btn" id="exportOrdersBtn">📋 Export Orders</button>
+</div>
+
+<script>
+    const menuDatabase = [
+        {id:1,name:"Steamed BBQ Pork Bun 2Pcs",desc:"Sweet savory BBQ pork, fluffy soft bun",price:7.80,category:"dumpling"},
+        {id:2,name:"Steamed Pork Soupy Dumpling 6pcs",desc:"Soup-filled pork burst, rich broth inside",price:10.80,category:"dumpling"},
+        {id:3,name:"Boiled Pork Wontons with Chili 8pcs",desc:"Spicy numbing wontons, savory sesame kick",price:9.80,category:"dumpling"},
+        {id:4,name:"Steamed Pork and Prawn Siu Mai 4pcs",desc:"Juicy pork & prawn, classic Cantonese open dumpling",price:12.80,category:"dumpling"},
+        {id:5,name:"Pork and Chives Dumpling 6/12pcs",desc:"Savory pork with fresh chives, fragrant and juicy",price:7.80,category:"dumpling"},
+        {id:6,name:"Pork, Prawn and Chives Dumpling 6/12pcs",desc:"Three delicious fillings in one perfect dumpling",price:8.80,category:"dumpling"},
+        {id:7,name:"Gluten Free Prawn Dumpling 4pcs",desc:"Crystal skin, sweet prawn, 100% gluten free",price:11.80,category:"dumpling"},
+        {id:8,name:"Chicken and Chive Dumpling 6/12pcs",desc:"Light chicken with fresh chives, healthy and tasty",price:7.80,category:"dumpling"},
+        {id:9,name:"Beef and Onion Dumpling 6/12pcs",desc:"Rich beef and sweet onion, hearty flavour",price:8.80,category:"dumpling"},
+        {id:10,name:"Crispy Tofu and Eggplant Bao 2pcs",desc:"Crispy tofu and tender eggplant in a soft, fluffy bao",price:9.80,category:"bao"},
+        {id:11,name:"Roasted Duck Bao 2pcs",desc:"Rich roasted duck with hoisin sauce, wrapped in a warm bao",price:12.80,category:"bao"},
+        {id:12,name:"BBQ Pork Bao 2pcs",desc:"Sweet and savory BBQ pork tucked inside a pillowy bao bun",price:12.80,category:"bao"},
+        {id:13,name:"Stir Fried Chicken Bao 2pcs",desc:"Savory stir-fried chicken with Asian spices in a soft bao",price:11.80,category:"bao"},
+        {id:14,name:"Stir Fried Beef Bao 2pcs",desc:"Tender stir-fried beef with aromatic sauce",price:11.80,category:"bao"},
+        {id:15,name:"Mixed Tofu Dumpling 6/12pcs",desc:"Fried Tofu, Bok Choy, Carrot, Chinese Broccoli",price:8.80,category:"veg-dumpling"},
+        {id:16,name:"Mixed Vegetable Dumpling 6/12pcs",desc:"Carrot, Green Cabbage, Coriander",price:8.80,category:"veg-dumpling"},
+        {id:17,name:"Eggplant Dumpling 6/12pcs",desc:"Tender eggplant mixed with savory seasonings",price:7.80,category:"veg-dumpling"},
+        {id:18,name:"Mushroom and Bok Choy Dumpling 6/12pcs",desc:"Fresh mushrooms and bok choy combined",price:8.80,category:"veg-dumpling"},
+        {id:19,name:"Egg and Chives Dumpling 6/12pcs",desc:"Fluffy eggs and fresh chives",price:7.80,category:"veg-dumpling"},
+        {id:20,name:"Peking Duck Pancakes 4pcs",desc:"Crispy duck with cucumber and hoisin sauce in soft pancakes",price:15.80,category:"entree"},
+        {id:21,name:"San Choy Bow 2pcs",desc:"Savory stir-fried filling served in fresh crunchy lettuce cups",price:11.80,category:"entree"},
+        {id:22,name:"Salt and Pepper Tofu",desc:"Crispy tofu tossed with garlic, chili, and aromatic pepper",price:12.80,category:"entree"},
+        {id:23,name:"Salt and Pepper Chili Chips",desc:"Crispy fries seasoned with chili, garlic, and spices",price:10.80,category:"entree"},
+        {id:24,name:"Deep Fried Eggplant",desc:"Golden fried eggplant glazed with sweet lime and soy",price:13.80,category:"entree"},
+        {id:25,name:"Cucumber Salad",desc:"Refreshing cucumber with vinegar and chili oil",price:10.80,category:"entree"},
+        {id:26,name:"Cheese and Prawn Spring Roll 4pcs",desc:"Crispy spring rolls filled with juicy prawns and melted cheese",price:12.80,category:"entree"},
+        {id:27,name:"Vegetable Spring Roll 4pcs",desc:"Golden crispy rolls packed with fresh mixed vegetables",price:10.80,category:"entree"},
+        {id:28,name:"Shallot Pancakes",desc:"Flaky pan-fried pancakes layered with fragrant shallots",price:9.80,category:"entree"},
+        {id:29,name:"Sizzling Mongolian Beef",desc:"Sizzling hot plate with savory Mongolian sauce",price:22.80,category:"main"},
+        {id:30,name:"Sizzling Mongolian Lamb",desc:"Sizzling lamb in aromatic Mongolian sauce",price:24.80,category:"main"},
+        {id:31,name:"Stir Fried Cumin Lamb",desc:"Tender lamb with fragrant cumin",price:24.80,category:"main"},
+        {id:32,name:"Crispy Shredded Beef",desc:"Crispy beef with sweet black vinegar sauce",price:22.80,category:"main"},
+        {id:33,name:"Satay Chicken with Vegetable",desc:"Grilled satay with peanut sauce",price:19.80,category:"main"},
+        {id:34,name:"Black Bean Chicken",desc:"Stir fried with black bean sauce",price:19.80,category:"main"},
+        {id:35,name:"Black Pepper Chicken",desc:"Stir fried with black pepper sauce",price:19.80,category:"main"},
+        {id:36,name:"Singapore Chili Chicken",desc:"Spicy Singapore chili sauce",price:19.80,category:"main"},
+        {id:37,name:"Honey Chicken",desc:"Sweet and sticky honey glaze",price:19.80,category:"main"},
+        {id:38,name:"Kung-Pao Chicken",desc:"Spicy Sichuan style with peanuts",price:19.80,category:"main"},
+        {id:39,name:"Sweet and Sour Pork",desc:"Classic sweet and sour with pineapple",price:19.80,category:"main"},
+        {id:40,name:"Green Beans and Okra with Pork",desc:"Stir fried with garlic",price:19.80,category:"main"},
+        {id:41,name:"King Prawn with Vegetables",desc:"In XO or garlic sauce",price:25.80,category:"main"},
+        {id:42,name:"Salt and Pepper King Prawn",desc:"Crispy prawns with salt and pepper spice",price:25.80,category:"main"},
+        {id:43,name:"Singapore Chili King Prawns",desc:"Spicy Singapore style prawns",price:25.80,category:"main"},
+        {id:44,name:"Honey King Prawn",desc:"Sweet honey glazed prawns",price:25.80,category:"main"},
+        {id:45,name:"Salt and Pepper Squid",desc:"Crispy salted squid",price:22.80,category:"main"},
+        {id:46,name:"Mixed Seasonal Vegetables",desc:"Stir fried with garlic or chili",price:18.80,category:"veg-main"},
+        {id:47,name:"Chinese Broccoli",desc:"In garlic or oyster sauce",price:18.80,category:"veg-main"},
+        {id:48,name:"Snow Peas and Broccoli",desc:"Fresh stir fried vegetables",price:18.80,category:"veg-main"},
+        {id:49,name:"Eggplant Soy Sauce Hot Pot",desc:"Simmered eggplant in soy sauce",price:18.80,category:"veg-main"},
+        {id:50,name:"Szechuan Spicy Eggplant",desc:"Spicy Szechuan style eggplant",price:18.80,category:"veg-main"},
+        {id:51,name:"Green Beans with Okra",desc:"Stir fried with garlic",price:18.80,category:"veg-main"},
+        {id:52,name:"Mapo Tofu Hot Pot",desc:"Spicy tofu in Szechuan sauce",price:18.80,category:"veg-main"},
+        {id:53,name:"Mixed Mushroom with Okra",desc:"Fresh mushrooms and okra",price:19.80,category:"veg-main"},
+        {id:54,name:"Bok Choy with Soy Sauce",desc:"Simple and fresh",price:18.80,category:"veg-main"},
+        {id:55,name:"Vegetarian Fried Rice",desc:"With egg",price:14.80,category:"rice"},
+        {id:56,name:"Egg Fried Rice",desc:"With soy sauce and shallot",price:13.80,category:"rice"},
+        {id:57,name:"Shredded Duck Fried Rice",desc:"With egg",price:15.80,category:"rice"},
+        {id:58,name:"BBQ Pork Fried Rice",desc:"With egg",price:15.80,category:"rice"},
+        {id:59,name:"Special Combination Fried Rice",desc:"Prawn, chicken, beef, vegetable with egg",price:16.80,category:"rice"},
+        {id:60,name:"Thai Fried Rice",desc:"Choose chicken, beef or prawn",price:15.80,category:"rice"},
+        {id:61,name:"Stir Fried Rice Flat Noodles",desc:"With choice of meat and egg",price:16.80,category:"rice"},
+        {id:62,name:"Stir Fried Hand Made Noodles",desc:"With choice of meat",price:15.80,category:"rice"},
+        {id:63,name:"Singapore Rice Thin Noodle",desc:"With chicken and Singapore sauce",price:15.80,category:"rice"},
+        {id:64,name:"BBQ Pork Noodle Soup",desc:"Hand made noodles",price:15.80,category:"rice"},
+        {id:65,name:"Chicken Laksa",desc:"Coconut curry noodle soup",price:15.80,category:"rice"},
+        {id:66,name:"Seafood Laksa",desc:"Prawns and seafood in laksa broth",price:17.80,category:"rice"},
+        {id:67,name:"Steamed Rice",desc:"",price:3.00,category:"rice"}
+    ];
+
+    const categoryMap = {
+        'dumpling': '🥟 Dumplings',
+        'bao': '🥙 Bao Buns',
+        'veg-dumpling': '🌱 Veg Dumplings',
+        'entree': '🍢 Entree',
+        'main': '🍛 Main',
+        'veg-main': '🥬 Veg Main',
+        'rice': '🍜 Rice & Noodles'
+    };
+
+    const categories = [...new Set(menuDatabase.map(item => item.category))];
+    let currentTable = null;
+    let cart = [];
+    let currentCategory = categories[0];
+// 主页控制
+let showHome = true;
+
+function checkAndShowHome() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableParam = urlParams.get('table');
+    const skipHome = urlParams.get('skipHome');
+    
+    // 如果有桌号参数且没有 skipHome 参数，则显示主页
+    if (tableParam && !skipHome) {
+        showHome = true;
+        document.getElementById('homeScreen').style.display = 'block';
+        document.querySelector('.header').style.display = 'none';
+        document.querySelector('.categories').style.display = 'none';
+        document.querySelector('.menu-container').style.display = 'none';
+        document.querySelector('.cart-bar').style.display = 'none';
+        document.querySelector('.admin-panel').style.display = 'none';
+    } else {
+        showHome = false;
+        document.getElementById('homeScreen').style.display = 'none';
+        document.querySelector('.header').style.display = 'block';
+        document.querySelector('.categories').style.display = 'flex';
+        document.querySelector('.menu-container').style.display = 'block';
+        document.querySelector('.cart-bar').style.display = 'flex';
+        document.querySelector('.admin-panel').style.display = 'block';
+    }
+}
+
+function startOrder() {
+    showHome = false;
+    document.getElementById('homeScreen').style.display = 'none';
+    document.querySelector('.header').style.display = 'block';
+    document.querySelector('.categories').style.display = 'flex';
+    document.querySelector('.menu-container').style.display = 'block';
+    document.querySelector('.cart-bar').style.display = 'flex';
+    document.querySelector('.admin-panel').style.display = 'block';
+}
+    function init() {
+    checkAndShowHome();    
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableParam = urlParams.get('table');
+    if (tableParam && !isNaN(tableParam)) {
+        currentTable = parseInt(tableParam);
+        document.getElementById('tableInfo').innerHTML = `🏠 Table: ${currentTable}`;
+    }
+    loadCart();
+    renderCategories();
+    renderMenu();
+    updateCartUI();
+    renderQRButtons();
+    document.getElementById('viewCartBtn').onclick = showCartModal;
+    document.getElementById('closeModal').onclick = () => document.getElementById('cartModal').classList.remove('show');
+    document.getElementById('submitOrderBtn').onclick = submitOrder;
+    document.getElementById('exportOrdersBtn').onclick = exportOrders;
+    document.getElementById('startOrderBtn').onclick = startOrder;
+}
+
+    function renderCategories() {
+        const container = document.getElementById('categories');
+        container.innerHTML = categories.map(cat => `<div class="category-btn ${currentCategory === cat ? 'active' : ''}" data-category="${cat}">${categoryMap[cat] || cat}</div>`).join('');
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.onclick = () => { currentCategory = btn.dataset.category; renderCategories(); renderMenu(); };
+        });
+    }
+
+    function renderMenu() {
+        const container = document.getElementById('menuContainer');
+        const filtered = menuDatabase.filter(item => item.category === currentCategory);
+        container.innerHTML = filtered.map(item => `
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-desc">${item.desc || ' '}</div>
+                    <div class="item-price">${item.price}</div>
+                </div>
+                <button class="add-btn" data-id="${item.id}">+</button>
+            </div>
+        `).join('');
+        document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.onclick = () => {
+                const item = menuDatabase.find(i => i.id === parseInt(btn.dataset.id));
+                addToCart(item);
+            };
+        });
+    }
+
+    function addToCart(item) {
+        const existing = cart.find(c => c.id === item.id);
+        if (existing) existing.quantity++;
+        else cart.push({ ...item, quantity: 1 });
+        saveCart();
+        updateCartUI();
+        showToast(`Added ${item.name.substring(0, 30)}`);
+    }
+
+    function updateCartUI() {
+        const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
+        const totalPrice = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+        document.getElementById('cartCount').innerHTML = `${totalItems} items`;
+        document.getElementById('cartTotal').innerHTML = `$${totalPrice.toFixed(2)}`;
+    }
+
+    function showCartModal() {
+    const container = document.getElementById('cartItemsList');
+    if (cart.length === 0) {
+        container.innerHTML = '<div class="empty-cart">🛒 Cart is empty</div>';
+        document.getElementById('submitOrderBtn').style.display = 'none';
+    } else {
+        let itemsHtml = '';
+        let subtotal = 0;
+        
+        cart.forEach((item, idx) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            itemsHtml += `
+                <div class="cart-item">
+                    <div style="flex:1">${item.name}</div>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn" data-action="decr" data-idx="${idx}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" data-action="incr" data-idx="${idx}">+</button>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = itemsHtml + `
+            <div style="padding: 16px; border-top: 2px solid #eee; margin-top: 8px; background: white;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span>📋 Subtotal (items):</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px;">
+                    <span>💰 Total:</span>
+                    <span style="color: #FF6B35;">$${subtotal.toFixed(2)}</span>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('submitOrderBtn').style.display = 'block';
+
+        document.querySelectorAll('.qty-btn').forEach(btn => {
+            btn.onclick = () => {
+                const idx = parseInt(btn.dataset.idx);
+                if (btn.dataset.action === 'incr') cart[idx].quantity++;
+                else if (btn.dataset.action === 'decr') {
+                    cart[idx].quantity--;
+                    if (cart[idx].quantity <= 0) cart.splice(idx, 1);
+                }
+                saveCart();
+                updateCartUI();
+                showCartModal();
+            };
+        });
+    }
+    document.getElementById('cartModal').classList.add('show');
+}
+
+    function submitOrder() {
+        if (!currentTable) { alert('Please scan table QR code to order'); return; }
+        if (cart.length === 0) { alert('Please add items to cart'); return; }
+        const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+        const order = { id: Date.now(), table: currentTable, items: cart.map(i => ({ name: i.name, quantity: i.quantity, price: i.price })), total, time: new Date().toLocaleString() };
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        cart = [];
+        saveCart();
+        updateCartUI();
+        document.getElementById('cartModal').classList.remove('show');
+        alert(`✅ Order submitted!\nTable: ${currentTable}\nTotal: $${total.toFixed(2)}`);
+    }
+
+    function saveCart() {
+        if (currentTable) {
+            const allCarts = JSON.parse(localStorage.getItem('allCarts') || '{}');
+            allCarts[currentTable] = cart;
+            localStorage.setItem('allCarts', JSON.stringify(allCarts));
+        }
+    }
+
+    function loadCart() {
+        if (currentTable) {
+            const allCarts = JSON.parse(localStorage.getItem('allCarts') || '{}');
+            cart = allCarts[currentTable] || [];
+        } else { cart = []; }
+    }
+
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.textContent = msg;
+        toast.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;padding:8px 16px;border-radius:20px;font-size:14px;z-index:1000';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1500);
+    }
+
+    function renderQRButtons() {
+        const container = document.getElementById('qrButtons');
+        container.innerHTML = '';
+        for (let i = 1; i <= 13; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'qr-btn';
+            btn.textContent = `Table ${i}`;
+            btn.onclick = () => generateQR(i);
+            container.appendChild(btn);
+        }
+    }
+
+    function generateQR(tableNum) {
+        const baseUrl = window.location.href.split('?')[0];
+        const qrUrl = `${baseUrl}?table=${tableNum}`;
+        const qrImgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrUrl)}`;
+        document.getElementById('qrCodeDisplay').innerHTML = `<div style="background:white;padding:16px;border-radius:12px;display:inline-block;"><strong>Table ${tableNum} QR Code</strong><br/><img src="${qrImgUrl}" style="margin-top:10px;width:180px;"><br/><button onclick="window.open('${qrImgUrl}')" style="margin-top:10px;padding:6px 12px;background:#FF6B35;color:white;border:none;border-radius:6px;">Save Image</button></div>`;
+    }
+
+    function exportOrders() {
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        const dataStr = JSON.stringify(orders, null, 2);
+        const blob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `orders_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        alert(`Exported ${orders.length} orders`);
+    }
+
+    init();
+</script>
+</body>
+</html>
