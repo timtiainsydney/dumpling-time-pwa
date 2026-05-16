@@ -831,3 +831,180 @@ button {
     justify-content: flex-end;
   }
 }
+
+.poster-business {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top center, rgba(255, 255, 255, 0.9), transparent 42%),
+    linear-gradient(180deg, #f7f2ea 0%, #efe5d8 100%);
+}
+
+.poster-business::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(23, 23, 23, 0.12);
+  pointer-events: none;
+}
+
+.franchise-hero,
+.franchise-grid,
+.franchise-steps,
+.franchise-details,
+.franchise-form {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-business .franchise-lead {
+  max-width: 390px;
+}
+
+.franchise-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.franchise-metrics span {
+  padding: 10px 14px;
+  border: 1px solid rgba(23, 23, 23, 0.16);
+  border-radius: 999px;
+  color: #171717;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.franchise-btn,
+.franchise-submit {
+  margin-top: 28px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: #171717;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.franchise-grid,
+.franchise-details {
+  display: grid;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.franchise-grid article,
+.franchise-details article,
+.franchise-form {
+  padding: 22px 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(23, 23, 23, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.franchise-grid h3,
+.franchise-details h3,
+.franchise-form h3 {
+  margin-top: 10px;
+  font-size: 24px;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.poster-business .franchise-grid p:last-child {
+  margin: 12px 0 0;
+  max-width: none;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.franchise-steps {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(23, 23, 23, 0.12);
+}
+
+.franchise-steps ol {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.franchise-steps li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+  color: #171717;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.franchise-steps span {
+  color: rgba(23, 23, 23, 0.42);
+  font-size: 12px;
+}
+
+.franchise-details ul {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding-left: 18px;
+  color: #595653;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.franchise-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.franchise-form input,
+.franchise-form textarea {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid rgba(23, 23, 23, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #171717;
+  font: inherit;
+}
+
+.franchise-form textarea {
+  resize: vertical;
+}
+
+.franchise-submit {
+  justify-self: start;
+  margin-top: 6px;
+}
+
+.franchise-status {
+  min-height: 20px;
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.franchise-status.success {
+  color: #27613b;
+}
+
+.franchise-status.error {
+  color: #9f2d2d;
+}
