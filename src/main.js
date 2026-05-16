@@ -362,7 +362,7 @@ document.querySelector('#app').innerHTML = `
           <div class="form-group"><label for="bookTime">Time</label><input type="time" id="bookTime"></div>
           <div class="info-text" id="bookingHoursNote"></div>
           <button class="submit-btn" id="submitBooking">Request Booking</button>
-          <div class="info-text" id="bookingStatus">Or call (02) 1234 5678</div>
+          <div class="info-text" id="bookingStatus">Or call 0450 650 680</div>
         </div>
       </section>
     </main>
@@ -598,7 +598,7 @@ function getBookingHours(dateValue) {
 
 function resetBookingStatus() {
   const status = document.getElementById('bookingStatus');
-  if (status) status.textContent = 'Or call (02) 1234 5678';
+  if (status) status.textContent = 'Or call 0450 650 680';
 }
 
 function updateBookingAvailability() {
