@@ -259,7 +259,7 @@ document.querySelector('#app').innerHTML = `
             </form>
           </section>
 
-          <section class="business-section" id=""businessSection"">
+          <section class="business-section" id="businessSection">
             <div class="section-intro">
               <p class="app-kicker">Business</p>
               <h2>Built For More Than One Store</h2>
@@ -297,11 +297,11 @@ document.querySelector('#app').innerHTML = `
             <p class="section-closing">A strong brand scales on more than demand. It scales on control.</p>
           </section>
 
-          <section class="delivery-section" id=""deliverySection"">
+          <section class="delivery-section" id="deliverySection">
             <div class="section-intro">
               <p class="app-kicker">Delivery</p>
               <h2>From Kitchen To Customer</h2>
-              <p>Every order should feel considered ï¿½ï¿½ whether guests dine in, collect on the way home or order across the neighbourhood.</p>
+              <p>Every order should feel considered ¡ª whether guests dine in, collect on the way home or order across the neighbourhood.</p>
             </div>
             <div class="capability-grid delivery-grid">
               <article><span>01</span><h3>Pickup</h3><p>Fast takeaway flows for guests who want Dumpling Time on their own schedule.</p></article>
@@ -626,7 +626,7 @@ document.getElementById('franchiseForm')?.addEventListener('submit', (event) => 
   localStorage.setItem('franchiseEnquiries', JSON.stringify(savedEnquiries));
 
   event.currentTarget.reset();
-  status.textContent = 'Thanks ï¿½ï¿½ your enquiry has been submitted. We will be in touch soon.';
+  status.textContent = 'Thanks ¡ª your enquiry has been submitted. We will be in touch soon.';
   status.className = 'franchise-status success';
 });
 
@@ -696,6 +696,7 @@ const initialScreen = new URLSearchParams(window.location.search).get('screen');
 if (initialScreen === 'menu' || initialScreen === 'booking') {
   switchPage(initialScreen);
 }
+
 
 
 
