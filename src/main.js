@@ -301,7 +301,7 @@ document.querySelector('#app').innerHTML = `
             <div class="section-intro">
               <p class="app-kicker">Delivery</p>
               <h2>From Kitchen To Customer</h2>
-              <p>Every order should feel considered ¡ª whether guests dine in, collect on the way home or order across the neighbourhood.</p>
+              <p>Every order should feel considered ï¿½ï¿½ whether guests dine in, collect on the way home or order across the neighbourhood.</p>
             </div>
             <div class="capability-grid delivery-grid">
               <article><span>01</span><h3>Pickup</h3><p>Fast takeaway flows for guests who want Dumpling Time on their own schedule.</p></article>
@@ -357,6 +357,7 @@ document.querySelector('#app').innerHTML = `
           <div class="form-group"><label for="bookGuests">Guests</label><input type="number" value="2" id="bookGuests"></div>
           <div class="form-group"><label for="bookDate">Date</label><input type="date" id="bookDate"></div>
           <div class="form-group"><label for="bookTime">Time</label><input type="time" id="bookTime"></div>
+          <div class="info-text" id="bookingHoursNote"></div>
           <button class="submit-btn" id="submitBooking">Request Booking</button>
           <div class="info-text">Or call (02) 1234 5678</div>
         </div>
@@ -584,10 +585,63 @@ document.getElementById('takeawayBtn')?.addEventListener('click', () => {
 document.getElementById('bookTableBtn')?.addEventListener('click', () => {
   switchPage('booking');
 });
+function getBookingHours(dateValue) {
+  if (!dateValue) return null;
+  const day = new Date(`${dateValue}T12:00:00`).getDay();
+  if (day === 2) return { closed: true };
+  if (day === 5 || day === 6) return { min: '17:00', max: '21:30', label: '5:00pm-9:30pm' };
+  return { min: '17:00', max: '20:30', label: '5:00pm-8:30pm' };
+}
+
+function updateBookingAvailability() {
+  const dateValue = document.getElementById('bookDate')?.value;
+  const timeInput = document.getElementById('bookTime');
+  const note = document.getElementById('bookingHoursNote');
+  if (!timeInput || !note) return;
+  const hours = getBookingHours(dateValue);
+  if (!hours) {
+    note.textContent = 'Please choose a date to see available booking hours.';
+    return;
+  }
+  if (hours.closed) {
+    timeInput.value = '';
+    timeInput.disabled = true;
+    timeInput.removeAttribute('min');
+    timeInput.removeAttribute('max');
+    note.textContent = 'Closed on Tuesdays - bookings are unavailable.';
+    return;
+  }
+  timeInput.disabled = false;
+  timeInput.min = hours.min;
+  timeInput.max = hours.max;
+  note.textContent = `Available booking time: ${hours.label}`;
+  if (timeInput.value && (timeInput.value < hours.min || timeInput.value > hours.max)) {
+    timeInput.value = '';
+  }
+}
 document.getElementById('submitBooking')?.addEventListener('click', () => {
   const name = document.getElementById('bookName').value.trim();
+  const dateValue = document.getElementById('bookDate').value;
+  const timeValue = document.getElementById('bookTime').value;
+  const hours = getBookingHours(dateValue);
   if (!name) {
     alert('Please enter your name.');
+    return;
+  }
+  if (!dateValue) {
+    alert('Please choose a date.');
+    return;
+  }
+  if (hours?.closed) {
+    alert('Sorry, we are closed on Tuesdays.');
+    return;
+  }
+  if (!timeValue) {
+    alert('Please choose a booking time.');
+    return;
+  }
+  if (timeValue < hours.min || timeValue > hours.max) {
+    alert(`Please choose a time between ${hours.label}.`);
     return;
   }
   alert(`${name}, your booking request has been submitted.`);
@@ -626,7 +680,7 @@ document.getElementById('franchiseForm')?.addEventListener('submit', (event) => 
   localStorage.setItem('franchiseEnquiries', JSON.stringify(savedEnquiries));
 
   event.currentTarget.reset();
-  status.textContent = 'Thanks ¡ª your enquiry has been submitted. We will be in touch soon.';
+  status.textContent = 'Thanks ï¿½ï¿½ your enquiry has been submitted. We will be in touch soon.';
   status.className = 'franchise-status success';
 });
 
@@ -688,6 +742,8 @@ window.addEventListener('offline', updateConnectionState);
 const today = new Date().toISOString().split('T')[0];
 const dateInput = document.getElementById('bookDate');
 if (dateInput) dateInput.value = today;
+dateInput?.addEventListener('change', updateBookingAvailability);
+updateBookingAvailability();
 if (isStandalone()) document.getElementById('headerInstall')?.classList.add('hidden');
 updateConnectionState();
 renderMenu();
