@@ -1,4 +1,4 @@
-﻿import { registerSW } from 'virtual:pwa-register';
+import { registerSW } from 'virtual:pwa-register';
 import './styles.css';
 
 let updateApp = null;
@@ -184,9 +184,79 @@ document.querySelector('#app').innerHTML = `
           </section>
 
           <section class="poster-business" id="franchiseSection">
-            <p class="script-title">Grow With Us</p>
-            <h2>Franchise</h2>
-            <p>Built for future partners who want to bring the Dumpling Time experience into new neighbourhoods with a repeatable brand, menu and operating model.</p>
+            <div class="franchise-hero">
+              <p class="script-title">Grow With Us</p>
+              <h2>Franchise</h2>
+              <p class="franchise-lead">Bring Dumpling Time to the next neighbourhood with a refined brand, a proven menu and an operating model built to scale.</p>
+              <div class="franchise-metrics">
+                <span>Brand</span>
+                <span>Menu</span>
+                <span>Systems</span>
+              </div>
+              <button class="franchise-btn" id="franchiseCta" type="button">Start a conversation</button>
+            </div>
+
+            <div class="franchise-grid">
+              <article>
+                <p class="app-kicker">Why us</p>
+                <h3>Built to repeat</h3>
+                <p>A focused menu, recognisable identity and store experience designed to travel well across new neighbourhoods.</p>
+              </article>
+              <article>
+                <p class="app-kicker">Support</p>
+                <h3>More than recipes</h3>
+                <p>Brand, training, supply chain, launch guidance and operating systems working together as one business engine.</p>
+              </article>
+              <article>
+                <p class="app-kicker">Partner fit</p>
+                <h3>Operators wanted</h3>
+                <p>Best suited to people who care about hospitality, consistency and building something durable over time.</p>
+              </article>
+            </div>
+
+            <div class="franchise-steps">
+              <p class="app-kicker">Pathway</p>
+              <ol>
+                <li><span>01</span> Enquiry</li>
+                <li><span>02</span> Conversation</li>
+                <li><span>03</span> Site review</li>
+                <li><span>04</span> Training</li>
+                <li><span>05</span> Launch</li>
+              </ol>
+            </div>
+            <div class="franchise-details">
+              <article>
+                <p class="app-kicker">Investment</p>
+                <h3>Built with discipline</h3>
+                <ul>
+                  <li>Indicative investment discussed after initial fit review</li>
+                  <li>Site, fit-out and opening costs assessed by location</li>
+                  <li>Commercial terms shaped around long-term viability</li>
+                </ul>
+              </article>
+              <article>
+                <p class="app-kicker">Requirements</p>
+                <h3>What we look for</h3>
+                <ul>
+                  <li>Hands-on hospitality mindset</li>
+                  <li>Commitment to quality and brand consistency</li>
+                  <li>Capacity to build and lead a local team</li>
+                </ul>
+              </article>
+            </div>
+
+            <form class="franchise-form" id="franchiseForm">
+              <div>
+                <p class="app-kicker">Franchise enquiry</p>
+                <h3>Start the conversation</h3>
+              </div>
+              <input type="text" placeholder="Name" id="franchiseName" required>
+              <input type="email" placeholder="Email" id="franchiseEmail" required>
+              <input type="text" placeholder="Preferred location" id="franchiseLocation" required>
+              <textarea rows="4" placeholder="Tell us a little about your background" id="franchiseBackground" required></textarea>
+              <button type="submit" class="franchise-submit">Submit enquiry</button>
+              <p class="franchise-status" id="franchiseStatus" aria-live="polite"></p>
+            </form>
           </section>
 
           <section class="poster-capabilities" id="businessSection">
@@ -485,6 +555,48 @@ document.getElementById('submitBooking')?.addEventListener('click', () => {
   alert(`${name}, your booking request has been submitted.`);
 });
 
+document.getElementById('franchiseForm')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = document.getElementById('franchiseName').value.trim();
+  const email = document.getElementById('franchiseEmail').value.trim();
+  const location = document.getElementById('franchiseLocation').value.trim();
+  const background = document.getElementById('franchiseBackground').value.trim();
+  const status = document.getElementById('franchiseStatus');
+
+  if (!name || !email || !location || !background) {
+    status.textContent = 'Please complete every field before submitting.';
+    status.className = 'franchise-status error';
+    return;
+  }
+
+  const emailLooksValid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+  if (!emailLooksValid) {
+    status.textContent = 'Please enter a valid email address.';
+    status.className = 'franchise-status error';
+    return;
+  }
+
+  const enquiry = {
+    name,
+    email,
+    location,
+    background,
+    submittedAt: new Date().toISOString()
+  };
+  const savedEnquiries = JSON.parse(localStorage.getItem('franchiseEnquiries') || '[]');
+  savedEnquiries.push(enquiry);
+  localStorage.setItem('franchiseEnquiries', JSON.stringify(savedEnquiries));
+
+  event.currentTarget.reset();
+  status.textContent = 'Thanks �� your enquiry has been submitted. We will be in touch soon.';
+  status.className = 'franchise-status success';
+});
+
+document.getElementById('franchiseCta')?.addEventListener('click', () => {
+  document.getElementById('franchiseForm')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  window.setTimeout(() => document.getElementById('franchiseName')?.focus(), 350);
+});
+
 document.querySelectorAll('.filter-chip').forEach((chip) => {
   chip.addEventListener('click', () => {
     document.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('active-filter'));
@@ -546,3 +658,12 @@ const initialScreen = new URLSearchParams(window.location.search).get('screen');
 if (initialScreen === 'menu' || initialScreen === 'booking') {
   switchPage(initialScreen);
 }
+
+
+
+
+
+
+
+
+
