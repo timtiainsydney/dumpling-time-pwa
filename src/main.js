@@ -354,7 +354,7 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="card">
           <div class="form-group"><label for="bookName">Name</label><input type="text" placeholder="Your name" id="bookName"></div>
-          <div class="form-group"><label for="bookPhone">Phone</label><input type="tel" placeholder="Your phone number" id="bookPhone"></div>
+          <div class="form-group"><label for="bookPhone">Phone</label><input type="tel" placeholder="04xxxxxxxx" maxlength="10" inputmode="numeric" id="bookPhone"></div>
           <div class="form-group"><label for="bookAdults">Adults</label><input type="number" min="1" value="2" id="bookAdults"></div>
           <div class="form-group"><label for="bookChildren">Children</label><input type="number" min="0" value="0" id="bookChildren"></div>
           <div class="form-group"><label for="bookHighChair">High chair needed?</label><select id="bookHighChair"><option value="no">No</option><option value="yes">Yes</option></select></div>
@@ -596,6 +596,11 @@ function getBookingHours(dateValue) {
   return { min: '17:00', max: '20:30', label: '5:00pm-8:30pm' };
 }
 
+function resetBookingStatus() {
+  const status = document.getElementById('bookingStatus');
+  if (status) status.textContent = 'Or call (02) 1234 5678';
+}
+
 function updateBookingAvailability() {
   const dateValue = document.getElementById('bookDate')?.value;
   const timeInput = document.getElementById('bookTime');
@@ -623,6 +628,7 @@ function updateBookingAvailability() {
   }
 }
 document.getElementById('submitBooking')?.addEventListener('click', () => {
+  resetBookingStatus();
   const name = document.getElementById('bookName').value.trim();
   const phone = document.getElementById('bookPhone').value.trim();
   const adults = Number(document.getElementById('bookAdults').value);
@@ -637,6 +643,10 @@ document.getElementById('submitBooking')?.addEventListener('click', () => {
   }
   if (!phone) {
     alert('Please enter your phone number.');
+    return;
+  }
+  if (!/^04\d{8}$/.test(phone)) {
+    alert('Please enter a valid Australian mobile number starting with 04 and containing 10 digits in total.');
     return;
   }
   if (!Number.isFinite(adults) || adults < 1) {
@@ -664,7 +674,7 @@ document.getElementById('submitBooking')?.addEventListener('click', () => {
     return;
   }
   if (status) {
-    status.textContent = 'Booking request submitted successfully. We will message you soon to confirm whether your booking is accepted.';
+    status.textContent = 'Your booking request has been sent. We will message you shortly to confirm your table.';
   }
 });
 
@@ -763,7 +773,11 @@ window.addEventListener('offline', updateConnectionState);
 const today = new Date().toISOString().split('T')[0];
 const dateInput = document.getElementById('bookDate');
 if (dateInput) dateInput.value = today;
-dateInput?.addEventListener('change', updateBookingAvailability);
+dateInput?.addEventListener('change', () => {
+  resetBookingStatus();
+  updateBookingAvailability();
+});
+document.getElementById('bookTime')?.addEventListener('input', resetBookingStatus);
 updateBookingAvailability();
 if (isStandalone()) document.getElementById('headerInstall')?.classList.add('hidden');
 updateConnectionState();
