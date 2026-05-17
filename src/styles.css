@@ -1236,3 +1236,20 @@ button {
     width: 100%;
   }
 }
+
+.systems-grid article {
+  min-height: 176px;
+}
+
+.systems-visuals {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.systems-visuals img {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(23, 23, 23, 0.14);
+}

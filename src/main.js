@@ -282,6 +282,25 @@ document.querySelector('#app').innerHTML = `
             <button class="section-cta">Talk to our business team</button>
           </section>
 
+          <section class="systems-section" id="systemsSection">
+            <div class="section-intro">
+              <p class="app-kicker">Systems</p>
+              <h2>Built To Scale Before We Need To</h2>
+              <p>Future growth needs more than more stores. It needs shared data, repeatable processes and dedicated IT capability strong enough to support every location from the start.</p>
+            </div>
+            <div class="systems-visuals">
+              <img src="/home/systems-expansion-stores.jpg" alt="Future multi-store Dumpling Time concept">
+              <img src="/home/systems-network-visual.jpg" alt="Connected multi-store operations visual">
+            </div>
+            <div class="capability-grid systems-grid">
+              <article><span>01</span><h3>Unified Data</h3><p>One source of truth across future locations, not fragmented manual updates.</p></article>
+              <article><span>02</span><h3>Repeatable Operations</h3><p>Processes designed to be documented, monitored and reproduced store by store.</p></article>
+              <article><span>03</span><h3>Team Capability</h3><p>Operations, training, supply chain and IT support work together to keep systems, workflows and store standards stable as future locations come online.</p></article>
+              <article><span>04</span><h3>Expansion Readiness</h3><p>Building the backbone early lowers future rework cost and protects growth opportunities.</p></article>
+            </div>
+            <p class="section-closing">Growth should reveal opportunity, not the systems gap behind it.</p>
+          </section>
+
           <section class="supply-section" id="supplyChainSection">
             <div class="section-intro">
               <p class="app-kicker">Supply Chain</p>
@@ -388,6 +407,7 @@ document.querySelector('#app').innerHTML = `
       <button data-jump="story">Our Story</button>
       <button data-jump="franchise">Franchise</button>
       <button data-jump="business">Business</button>
+      <button data-jump="systems">Systems</button>
       <button data-jump="supply-chain">Supply Chain</button>
       <button data-jump="delivery">Delivery</button>
       <button data-jump="platform">Platform</button>
@@ -552,6 +572,7 @@ document.querySelectorAll('[data-jump]').forEach((btn) => {
       story: 'storySection',
       franchise: 'franchiseSection',
       business: 'businessSection',
+      systems: 'systemsSection',
       'supply-chain': 'supplyChainSection',
       delivery: 'deliverySection',
       platform: 'platformSection',
