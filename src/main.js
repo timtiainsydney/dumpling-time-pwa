@@ -143,8 +143,8 @@ document.querySelector('#app').innerHTML = `
           </section>
 
           <section class="poster-gallery" id="spaceSection">
-            <img src="/home/storefront-day.jpg" alt="Dumpling Time storefront during the day">
-            <img src="/home/interior-empty.jpg" alt="Dumpling Time dining room">
+            <img src="/home/story-storefront-night.jpg" alt="Dumpling Time storefront at night">
+            <img src="/home/story-interior-entrance.jpg" alt="Dumpling Time dining room entrance">
           </section>
 
           <section class="poster-menu" id="menuShortcuts">
@@ -160,7 +160,7 @@ document.querySelector('#app').innerHTML = `
           </section>
 
           <section class="poster-feature">
-            <img src="/home/bao-real.jpg" alt="Open bao served at Dumpling Time">
+            <img src="/home/taste-collage-1.jpg" alt="Dumpling and prawn dumpling collage">
             <div>
               <p class="app-kicker">Signature Bites</p>
               <h3>Bao, dumplings and sizzling plates made for sharing.</h3>
@@ -168,13 +168,13 @@ document.querySelector('#app').innerHTML = `
           </section>
 
           <section class="poster-stack">
-            <img src="/home/prawn-dumpling.jpg" alt="Prawn dumpling close up">
-            <img src="/home/soupy-dumpling.jpg" alt="Soup dumpling close up">
-            <img src="/home/sizzling-dish.jpg" alt="Sizzling main dish">
+            <img src="/home/taste-collage-2.jpg" alt="Bao and main dishes collage">
+            <img src="/home/taste-collage-3.jpg" alt="Bar and interior collage">
+            <img src="/home/taste-collage-4.jpg" alt="Dining room atmosphere collage">
           </section>
 
           <section class="poster-drinks" id="drinksSection">
-            <img src="/home/cocktails-table.jpg" alt="Cocktails at Dumpling Time">
+            <img src="/home/drinks-collage-new.jpg" alt="Cocktails and beers at Dumpling Time">
             <div>
               <p class="script-title">Stay Later</p>
               <h2>Drinks After Dumplings</h2>
