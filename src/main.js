@@ -428,7 +428,7 @@ document.querySelector('#app').innerHTML = `
     <div class="install-sheet" id="iosInstallSheet" aria-live="polite">
       <div>
         <strong>Add to Home Screen</strong>
-        <p>On iPhone, tap Share in Safari, then choose Add to Home Screen.</p>
+        <p id="iosInstallCopy">On iPhone, tap Share in Safari, then choose Add to Home Screen.</p>
       </div>
       <div class="install-actions">
         <button class="install-primary" id="dismissIosInstall">Got it</button>
@@ -513,6 +513,11 @@ function isIos() {
   return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
 }
 
+function isSafariBrowser() {
+  const ua = window.navigator.userAgent;
+  return /safari/i.test(ua) && !/crios|fxios|edgios|opios|instagram|fbav|fban/i.test(ua);
+}
+
 function isStandalone() {
   return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 }
@@ -523,6 +528,12 @@ function showInstallHelp() {
     return;
   }
   if (isIos() && !isStandalone()) {
+    const iosInstallCopy = document.getElementById('iosInstallCopy');
+    if (iosInstallCopy) {
+      iosInstallCopy.textContent = isSafariBrowser()
+        ? 'On iPhone, tap Share in Safari, then choose Add to Home Screen.'
+        : 'If this opened inside another app, tap Open in Browser first. Then in Safari, tap Share and choose Add to Home Screen.';
+    }
     document.getElementById('iosInstallSheet')?.classList.add('show');
   }
 }
@@ -801,6 +812,13 @@ dateInput?.addEventListener('change', () => {
 document.getElementById('bookTime')?.addEventListener('input', resetBookingStatus);
 updateBookingAvailability();
 if (isStandalone()) document.getElementById('headerInstall')?.classList.add('hidden');
+if (isIos() && !isStandalone() && !isSafariBrowser()) {
+  const iosInstallCopy = document.getElementById('iosInstallCopy');
+  if (iosInstallCopy) {
+    iosInstallCopy.textContent = 'If this opened inside another app, tap Open in Browser first. Then in Safari, tap Share and choose Add to Home Screen.';
+  }
+  window.setTimeout(() => document.getElementById('iosInstallSheet')?.classList.add('show'), 900);
+}
 updateConnectionState();
 renderMenu();
 
