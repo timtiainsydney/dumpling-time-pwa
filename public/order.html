@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"> 
 <head>                                            
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
         .qty-btn{background:#f0f0f0;border:none;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer}
         .submit-order{background:#FF6B35;color:white;border:none;padding:14px;margin:16px;border-radius:12px;font-size:18px;cursor:pointer;width:calc(100% - 32px)}
         .empty-cart{text-align:center;padding:40px;color:#999}
-        .admin-panel{margin:16px;padding:16px;background:#f0f0f0;border-radius:12px}
+        .admin-panel{display:none;margin:16px;padding:16px;background:#f0f0f0;border-radius:12px}
         .qr-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
         .qr-btn{background:#4CAF50;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer}
         .export-btn{margin-top:12px;padding:8px 16px;background:#2196F3;color:white;border:none;border-radius:8px;cursor:pointer}
@@ -258,6 +258,9 @@
 // 主页控制
 let showHome = true;
 
+function isAdminMode() {
+    return new URLSearchParams(window.location.search).get('admin') === '1';
+}
 function checkAndShowHome() {
     const urlParams = new URLSearchParams(window.location.search);
     const tableParam = urlParams.get('table');
@@ -279,7 +282,7 @@ function checkAndShowHome() {
         document.querySelector('.categories').style.display = 'flex';
         document.querySelector('.menu-container').style.display = 'block';
         document.querySelector('.cart-bar').style.display = 'flex';
-        document.querySelector('.admin-panel').style.display = 'block';
+        document.querySelector('.admin-panel').style.display = isAdminMode() ? 'block' : 'none';
     }
 }
 
@@ -290,7 +293,7 @@ function startOrder() {
     document.querySelector('.categories').style.display = 'flex';
     document.querySelector('.menu-container').style.display = 'block';
     document.querySelector('.cart-bar').style.display = 'flex';
-    document.querySelector('.admin-panel').style.display = 'block';
+    document.querySelector('.admin-panel').style.display = isAdminMode() ? 'block' : 'none';
 }
     function init() {
     checkAndShowHome();    
@@ -305,6 +308,7 @@ function startOrder() {
     renderMenu();
     updateCartUI();
     renderQRButtons();
+    if (!isAdminMode()) document.querySelector('.admin-panel').style.display = 'none';
     document.getElementById('viewCartBtn').onclick = showCartModal;
     document.getElementById('closeModal').onclick = () => document.getElementById('cartModal').classList.remove('show');
     document.getElementById('submitOrderBtn').onclick = submitOrder;
