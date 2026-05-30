@@ -81,7 +81,52 @@ const menuDatabase = [
   { id: 64, name: 'BBQ Pork in Hand Made Noodle Soup', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/bbq-pork-noodle-soup.jpg' },
   { id: 65, name: '(Chicken or Beef or Vegetable) Laksa', desc: '', price: '$15.80', category: 'rice-noodle', diet: [''], image: '/menu/chicken-beef-vegetable-laksa.jpg' },
   { id: 66, name: 'Seafood Laksa', desc: '', price: '$17.80', category: 'rice-noodle', diet: [''], image: '/menu/seafood-laksa.jpg' },
-  { id: 67, name: 'Steamed Rice', desc: '', price: '$3.00', category: 'rice-noodle', diet: [''], image: '/menu/steamed-rice.jpg' }
+  { id: 67, name: 'Steamed Rice', desc: '', price: '$3.00', category: 'rice-noodle', diet: [''], image: '/menu/steamed-rice.jpg' },
+  { id: 68, name: 'Peter Drayton Shiraz', desc: 'Hunter Valley, NSW', price: '$5/GLASS $35/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'red-wine', diet: [''], image: '/menu/drink-red-wine.jpg' },
+  { id: 69, name: 'Peter Drayton Cabernet/Merlot', desc: 'Hunter Valley, NSW', price: '$5/GLASS $35/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'red-wine', diet: [''], image: '/menu/drink-red-wine.jpg' },
+  { id: 70, name: 'Little Goat Creek Pinot Noir', desc: 'Organic, New Zealand', price: '$5/GLASS $40/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'red-wine', diet: [''], image: '/menu/drink-red-wine.jpg' },
+  { id: 71, name: 'El Nino Tempranillo', desc: 'McLaren Vale, SA', price: '$5/GLASS $38/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'red-wine', diet: [''], image: '/menu/drink-red-wine.jpg' },
+  { id: 72, name: 'Te Mania Sauvignon Blanc', desc: 'Nelson, NZ, organic/vegan', price: '$5/GLASS $35/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'white-wine', diet: [''], image: '/menu/drink-white-wine.jpg' },
+  { id: 73, name: 'Peter Drayton Chardonnay', desc: 'Hunter Valley, NSW', price: '$5/GLASS $35/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'white-wine', diet: [''], image: '/menu/drink-white-wine.jpg' },
+  { id: 74, name: 'El Nino Pinot Grigio', desc: 'King Valley, VIC', price: '$5/GLASS $35/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'white-wine', diet: [''], image: '/menu/drink-white-wine.jpg' },
+  { id: 75, name: 'Brockenchack McKenzie William Riesling', desc: 'Eden Valley, SA', price: '$5/GLASS $45/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'white-wine', diet: [''], image: '/menu/drink-white-wine.jpg' },
+  { id: 76, name: 'Casa Coller Prosecco', desc: 'NV, Veneto, Italy', price: '$5/GLASS $48/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'sparkling-wine', diet: [''], image: '/menu/drink-sparkling-wine.jpg' },
+  { id: 77, name: "Le Grand Destre Rose D'Orange", desc: 'France', price: '$5/GLASS $38/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'rose', diet: [''], image: '/menu/drink-rose.jpg' },
+  { id: 78, name: 'Tsingtao', desc: 'Bottled beer', price: '$5/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'beer', diet: [''], image: '/menu/drink-beer.jpg' },
+  { id: 105, name: 'Asahi', desc: 'Bottled beer', price: '$5/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'beer', diet: [''], image: '/menu/drink-beer.jpg' },
+  { id: 106, name: 'Corona', desc: 'Bottled beer', price: '$5/BOTTLE', category: 'drink', drinkSubcategory: 'wine-beer', drinkWineGroup: 'beer', diet: [''], image: '/menu/drink-beer.jpg' },
+  { id: 79, name: 'Midori Illusion', desc: 'Midori, vodka, Cointreau, lime juice, pineapple juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 80, name: 'Japanese Slipper', desc: 'Midori, Cointreau, lime juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 81, name: 'Tequila/Limoncello Margarita', desc: 'Tequila or limoncello, Cointreau, lime juice, salt', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 82, name: 'Sex On The Beach', desc: 'Vodka, peach schnapps, orange juice, cranberry juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 83, name: 'Cosmopolitan', desc: 'Vodka, Cointreau, lime juice, cranberry juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 84, name: 'Lychee Daiquiri', desc: 'White rum, lychee liqueur, sugar, lime juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 85, name: 'Old Fashion', desc: 'Bourbon whisky, sugar, bitters', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 86, name: 'Gin Tonic', desc: 'Gin, tonic water, cucumber', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 87, name: 'Cuba Libre', desc: 'Spicy rum, melon liqueur, sugar, lime juice, Coke', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 88, name: 'Malibu Bay Breeze', desc: 'Malibu, pineapple juice, cranberry juice', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 89, name: 'Mudslide', desc: 'Baileys, Kahlua, Scotch, cream', price: '$15/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 90, name: 'Mojito', desc: 'White rum, mint, fresh lime, sugar, soda water', price: '$15/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 91, name: 'Long Island Iced Tea', desc: 'Tequila, white rum, vodka, Cointreau, gin, lemon juice, sugar, Coke', price: '$15/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 92, name: 'Mocktail Mojito', desc: 'Alcohol-free mojito', price: '$10/GLASS', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'cocktail', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 93, name: 'Wps Shot', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 107, name: 'Fire Ball', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 108, name: 'Vodka', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 109, name: 'Tequila', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 110, name: 'Malibu Rum', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 111, name: 'Whisky', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 112, name: 'Baileys', desc: 'Single shot', price: '$5/SHOT', category: 'drink', drinkSubcategory: 'cocktail', drinkCocktailGroup: 'shot', diet: [''], image: '/menu/drink-cocktails.jpg' },
+  { id: 94, name: 'Coke', desc: 'Canned soft drink', price: '$3/CAN', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-soft-drinks.jpg' },
+  { id: 95, name: 'Coke Zero', desc: 'Canned soft drink', price: '$3/CAN', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-soft-drinks.jpg' },
+  { id: 96, name: 'Sprite', desc: 'Canned soft drink', price: '$3/CAN', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-soft-drinks.jpg' },
+  { id: 97, name: 'Fanta', desc: 'Canned soft drink', price: '$3/CAN', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-soft-drinks.jpg' },
+  { id: 98, name: 'Lemonade Bitter', desc: 'Lemonade bitters', price: '$4/GLASS', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-soft-drinks.jpg' },
+  { id: 99, name: 'Apple Juice', desc: 'Juice by the glass', price: '$4/GLASS', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-juices.jpg' },
+  { id: 100, name: 'Orange Juice', desc: 'Juice by the glass', price: '$4/GLASS', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-juices.jpg' },
+  { id: 101, name: 'Pineapple Juice', desc: 'Juice by the glass', price: '$4/GLASS', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-juices.jpg' },
+  { id: 102, name: 'Cranberry Juice', desc: 'Juice by the glass', price: '$4/GLASS', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-juices.jpg' },
+  { id: 103, name: 'San Pellegrino Sparkling Water', desc: 'Italy', price: '$8/BOTTLE', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-sparkling-water.jpg' },
+  { id: 104, name: 'Chinese Tea Pot', desc: 'Green tea and dried rose', price: '$10/POT', category: 'drink', drinkSubcategory: 'non-alcohol', diet: [''], image: '/menu/drink-chinese-tea.jpg' }
 ];
 
 const categoryLabels = {
@@ -92,10 +137,33 @@ const categoryLabels = {
   entree: 'ENTREE',
   main: 'MAIN',
   'vegetarian-main': 'VEGETARIAN MAIN',
-  'rice-noodle': 'RICE AND NOODLE'
+  'rice-noodle': 'RICE AND NOODLE',
+  drink: 'DRINK'
+};
+
+const drinkSubcategoryLabels = {
+  'wine-beer': 'Wine & Beer',
+  cocktail: 'Cocktail & Shots',
+  'non-alcohol': 'Non Alcohol Drink'
+};
+
+const wineBeerGroupLabels = {
+  'red-wine': 'Red Wine',
+  'white-wine': 'White Wine',
+  beer: 'Beer',
+  'sparkling-wine': 'Sparkling Wine',
+  rose: 'Rose'
+};
+
+const cocktailGroupLabels = {
+  cocktail: 'Cocktail',
+  shot: 'Shot'
 };
 
 let currentCategory = 'all';
+let currentDrinkSubcategory = 'all';
+let currentWineBeerGroup = 'all';
+let currentCocktailGroup = 'all';
 let currentDiet = 'all';
 let installPromptEvent = null;
 
@@ -363,6 +431,15 @@ document.querySelector('#app').innerHTML = `
         <div class="filter-tabs" id="categoryFilter">
           ${Object.entries(categoryLabels).map(([key, label]) => `<span class="filter-chip ${key === 'all' ? 'active-filter' : ''}" data-cat="${key}">${label}</span>`).join('')}
         </div>
+        <div class="drink-subcategory-tabs hidden" id="drinkSubcategoryFilter">
+          ${Object.entries(drinkSubcategoryLabels).map(([key, label]) => `<span class="drink-subcategory-chip" data-drink-subcat="${key}">${label}</span>`).join('')}
+        </div>
+        <div class="drink-subcategory-tabs drink-group-tabs hidden" id="wineBeerGroupFilter">
+          ${Object.entries(wineBeerGroupLabels).map(([key, label]) => `<span class="drink-subcategory-chip wine-beer-group-chip" data-wine-group="${key}">${label}</span>`).join('')}
+        </div>
+        <div class="drink-subcategory-tabs drink-group-tabs hidden" id="cocktailGroupFilter">
+          ${Object.entries(cocktailGroupLabels).map(([key, label]) => `<span class="drink-subcategory-chip cocktail-group-chip" data-cocktail-group="${key}">${label}</span>`).join('')}
+        </div>
         <div id="menuList" class="menu-list"></div>
       </section>
 
@@ -454,6 +531,15 @@ function renderMenu() {
   if (currentCategory !== 'all') {
     filtered = filtered.filter((item) => item.category === currentCategory);
   }
+  if (currentCategory === 'drink' && currentDrinkSubcategory !== 'all') {
+    filtered = filtered.filter((item) => item.drinkSubcategory === currentDrinkSubcategory);
+  }
+  if (currentCategory === 'drink' && currentDrinkSubcategory === 'wine-beer' && currentWineBeerGroup !== 'all') {
+    filtered = filtered.filter((item) => item.drinkWineGroup === currentWineBeerGroup);
+  }
+  if (currentCategory === 'drink' && currentDrinkSubcategory === 'cocktail' && currentCocktailGroup !== 'all') {
+    filtered = filtered.filter((item) => item.drinkCocktailGroup === currentCocktailGroup);
+  }
   if (currentDiet !== 'all') {
     filtered = filtered.filter((item) => item.diet.includes(currentDiet));
   }
@@ -481,6 +567,31 @@ function renderMenu() {
       </article>
     `;
   }).join('');
+}
+
+function updateDrinkSubcategoryFilter() {
+  const row = document.getElementById('drinkSubcategoryFilter');
+  if (!row) return;
+  row.classList.toggle('hidden', currentCategory !== 'drink');
+  row.querySelectorAll('.drink-subcategory-chip').forEach((chip) => {
+    chip.classList.toggle('active-drink-subcategory', chip.dataset.drinkSubcat === currentDrinkSubcategory);
+  });
+
+  const wineBeerRow = document.getElementById('wineBeerGroupFilter');
+  if (wineBeerRow) {
+    wineBeerRow.classList.toggle('hidden', currentCategory !== 'drink' || currentDrinkSubcategory !== 'wine-beer');
+    wineBeerRow.querySelectorAll('.wine-beer-group-chip').forEach((chip) => {
+      chip.classList.toggle('active-drink-subcategory', chip.dataset.wineGroup === currentWineBeerGroup);
+    });
+  }
+
+  const cocktailRow = document.getElementById('cocktailGroupFilter');
+  if (cocktailRow) {
+    cocktailRow.classList.toggle('hidden', currentCategory !== 'drink' || currentDrinkSubcategory !== 'cocktail');
+    cocktailRow.querySelectorAll('.cocktail-group-chip').forEach((chip) => {
+      chip.classList.toggle('active-drink-subcategory', chip.dataset.cocktailGroup === currentCocktailGroup);
+    });
+  }
 }
 
 const pages = {
@@ -566,10 +677,14 @@ function jumpHomeSection(sectionId) {
 
 function openCategory(category) {
   currentCategory = category;
+  currentDrinkSubcategory = 'all';
+  currentWineBeerGroup = 'all';
+  currentCocktailGroup = 'all';
   switchPage('menu');
   document.querySelectorAll('.filter-chip').forEach((chip) => {
     chip.classList.toggle('active-filter', chip.dataset.cat === category);
   });
+  updateDrinkSubcategoryFilter();
   renderMenu();
 }
 
@@ -757,6 +872,37 @@ document.querySelectorAll('.filter-chip').forEach((chip) => {
     document.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('active-filter'));
     chip.classList.add('active-filter');
     currentCategory = chip.dataset.cat;
+    currentDrinkSubcategory = 'all';
+    currentWineBeerGroup = 'all';
+    currentCocktailGroup = 'all';
+    updateDrinkSubcategoryFilter();
+    renderMenu();
+  });
+});
+document.querySelectorAll('#drinkSubcategoryFilter .drink-subcategory-chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#drinkSubcategoryFilter .drink-subcategory-chip').forEach((c) => c.classList.remove('active-drink-subcategory'));
+    chip.classList.add('active-drink-subcategory');
+    currentDrinkSubcategory = chip.dataset.drinkSubcat;
+    currentWineBeerGroup = 'all';
+    currentCocktailGroup = 'all';
+    updateDrinkSubcategoryFilter();
+    renderMenu();
+  });
+});
+document.querySelectorAll('.wine-beer-group-chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.wine-beer-group-chip').forEach((c) => c.classList.remove('active-drink-subcategory'));
+    chip.classList.add('active-drink-subcategory');
+    currentWineBeerGroup = chip.dataset.wineGroup;
+    renderMenu();
+  });
+});
+document.querySelectorAll('.cocktail-group-chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.cocktail-group-chip').forEach((c) => c.classList.remove('active-drink-subcategory'));
+    chip.classList.add('active-drink-subcategory');
+    currentCocktailGroup = chip.dataset.cocktailGroup;
     renderMenu();
   });
 });
@@ -820,6 +966,7 @@ if (isIos() && !isStandalone() && !isSafariBrowser()) {
   window.setTimeout(() => document.getElementById('iosInstallSheet')?.classList.add('show'), 900);
 }
 updateConnectionState();
+updateDrinkSubcategoryFilter();
 renderMenu();
 
 const initialScreen = new URLSearchParams(window.location.search).get('screen');

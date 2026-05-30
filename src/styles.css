@@ -584,6 +584,34 @@ button {
   color: #ffffff;
 }
 
+.drink-subcategory-tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 20px 14px;
+  margin: -2px 0 8px;
+}
+
+.drink-subcategory-chip {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid #f0d3c7;
+  border-radius: 8px;
+  background: #fff6f1;
+  color: #4a3328;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.drink-subcategory-chip.active-drink-subcategory {
+  background: #2c2b28;
+  border-color: #2c2b28;
+  color: #ffffff;
+}
+
 .dietary-row {
   display: flex;
   gap: 12px;
